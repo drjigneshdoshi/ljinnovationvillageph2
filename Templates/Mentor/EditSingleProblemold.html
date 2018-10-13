@@ -1,0 +1,42 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="allocateProject">
+                <div class="row uniform" class="header-margin-double">
+                    <div class="5u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+						<input type="text" ng-model="problemData.problemName">
+                        
+                    </div>
+                    <div class="4u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        
+                    </div>
+                    <!-- <div class="3u 12u$(xsmall)">
+                        <h6>Mentor</h6>
+                        <select name="mentor_id" required>
+                            <option value="" disabled selected>Select Mentor</option>
+                            <option ng-repeat="mentor in mentors " value="{{mentor.mentor_id}}">
+                                {{mentor.mentor_name}}
+                            </option>
+                        </select>
+                    </div> --> 
+                    <div class="3u 12u$(xsmall)">
+                        <br>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

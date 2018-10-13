@@ -1,0 +1,33 @@
+student_id: 1
+user_id: 1
+first_name: Het
+middle_name: Shashin
+last_name: Kansara
+gender: Male
+photo: photo
+email: hetkansara.work@gmail.com
+contact: 7405872773
+passwd: 1bbd886460827015e5d605ed44252251
+user_type: Student
+user_status: 1
+created_at: 2017-11-15 15:43:31
+project_id: 8
+group_id: 1
+project_title: LJ Internship Fair
+project_category: Project
+project_stream: MCA
+project_branch: CE-IT-ICT
+institute_name: LJ Institute of Computer Applications
+institute_state: Gujarat
+institute_city: Ahmedabad
+team_size: 1
+team_member_names: Het Kansara
+guide_name: Jignesh Doshi
+guide_email: doshijig@gmail.com
+guide_contact: 7474747474
+co_guide_name: Alok Manke
+co_guide_email: alokmanke@gmail.com
+co_guide_contact: 7458877777
+project_domain: Send My SMS is a web application for sending bulk/individual message to any number. It is developed for local stores and Institutes. Later on, additional features like contacts and dynamic message using .csv file is also added to the website. By using these features institutes can generate dynamic messages (Attendance, Exam results, etc.) using .csv file.
+project_image: Project Plan.jpg
+project_video: Roadmap.jpg

@@ -1,0 +1,145 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <div class="row uniform" class="header-margin-double">
+                <div class="3u 12u$(xsmall)">
+                    <h6>Project Stream</h6>
+                    <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                        <option value="" selected>All Streams</option>
+                        <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                            {{stream.stream_name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="3u 12u$(xsmall)">
+                    <h6>Project Branch</h6>
+                    <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                        <option value="" selected>All Branches</option>
+                        <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                            {{branch.branch_name}}
+                        </option>
+
+                    </select>
+                </div>
+                <div class="3u 12u$(xsmall)">
+                    <h6>Mentor</h6>
+                    <select name="mentor_id" ng-model="selected_mentor" required>
+                        <option value="" selected>All Mentors</option>
+                        <option ng-repeat="mentor in mentors | filter:{ stream: selected_stream, branch: selected_branch }" value="{{mentor.mentor_id}}">
+                            {{mentor.mentor_name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="3u 12u$(xsmall)">
+                    <h6>Project Evaluated</h6>
+                    <select name="mentor_id" ng-model="evaluated" required>
+                        <option value="" selected>All Projectes</option>
+                        <option value="1">Evaluated</option>
+                        <option value="0">Not Evaluated</option>
+                    </select>
+                </div>
+                <div class="12u 12u$(xsmall)">
+                        <form id="deallocateProject">
+                    <table class="table-wrapper">
+                        <thead>
+                            <tr>
+                                <th width="25">
+                                    <input type="checkbox" id="projects" class="groups" onChange="selectAll(this.id);" style="border:2px dotted #00f;display:block;background:#ff0000;">
+                                    <label for="projects"></label>
+                                </th>
+                                <th width="20">
+                                        <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                                        <input type="hidden" name="email" value="{{cookie.email}}">
+                                        <input type="hidden" name="remove_project_allocation" value="true">
+                                        <button type="submit" class="round-button" value="Delete" id="allocateProject" style="color: white !important;background-color:rgb(155,0,50) !important;"
+                                        ><i class="material-icons">delete</i></button>
+                                </th>
+                                <th>
+                                    Project Details
+                                </th>
+                                <th width="250">
+                                    Average Rating
+                                </th>
+                                <th width="170">
+                                    Mentor Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="project in projects | filter:{ project_stream: selected_stream, project_branch: selected_branch, mentor_id: selected_mentor , project_evaluated: evaluated }: true">
+                                <td>
+                                    <input type="checkbox" name="projects[]" id="{{project.project_id}}" class="projects" value="{{project.project_id}}">
+                                    <label for="{{project.project_id}}"></label>
+                                </td>
+                                <td>
+                                    <b>{{$index+1}}.</b>
+                                </td>
+                                <td>
+                                    <b>
+                                        <details style="width:100%;">
+                                            <summary>
+                                                <b style="color:rgb(155,0,50);">
+                                                    {{project.project_title}}</b>
+                                            </summary>
+                                            <div id="justify">
+                                                <p style="padding-left:1.5em;padding-right:1em;">
+                                                    {{project.project_abstract}}
+                                                </p>
+                                            </div>
+                                        </details>
+                                    </b>
+                                </td>
+                                <td>
+                                    <fieldset class="rating" style="margin:0;padding:0;">
+                                        <input type="radio" id="{{project.project_title}}10" name="{{project.project_title}}" value="10" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="full" for="{{project.project_title}}10" title="Awesome - 5 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}9" name="{{project.project_title}}" value="9" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="half" for="{{project.project_title}}9" title="Pretty good - 4.5 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}8" name="{{project.project_title}}" value="8" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="full" for="{{project.project_title}}8" title="Pretty good - 4 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}7" name="{{project.project_title}}" value="7" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="half" for="{{project.project_title}}7" title="Meh - 3.5 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}6" name="{{project.project_title}}" value="6" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="full" for="{{project.project_title}}6" title="Meh - 3 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}5" name="{{project.project_title}}" value="5" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="half" for="{{project.project_title}}5" title="Kinda bad - 2.5 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}4" name="{{project.project_title}}" value="4" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="full" for="{{project.project_title}}4" title="Kinda bad - 2 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}3" name="{{project.project_title}}" value="3" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="half" for="{{project.project_title}}3" title="Meh - 1.5 stars"></label>
+                                        <input type="radio" id="{{project.project_title}}2" name="{{project.project_title}}" value="2" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="full" for="{{project.project_title}}2" title="Sucks big time - 1 star"></label>
+                                        <input type="radio" id="{{project.project_title}}1" name="{{project.project_title}}" value="1" ng-model="project.average_rating"
+                                            disabled/>
+                                        <label class="half" for="{{project.project_title}}1" title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    {{project.mentor_name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

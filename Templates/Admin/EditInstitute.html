@@ -1,0 +1,56 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <form id="editInstitute">
+        <div class="inner">
+		
+                <div class="12u" style="width:75%;background-color:white;">
+
+				<br>
+                <span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+                        <i class="material-icons">account_circle</i>Edit Institute
+				</span>
+				<span style="float:right" class="buttons">
+                        <a href="#/Admin/Institutes">
+                            <i class="material-icons">close</i> Close
+                        </a>
+                 </span>
+			</div>
+            <div class="row uniform">
+                <div class="12u">
+				<BR><BR><BR>
+                    <div class="row uniform">
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Id *</h6>
+                            <input type="text" name="inst_id" value="{{institute.inst_id}}" maxlength="5" class="input-fields" readonly>
+							 <BR>
+							<h6>Institute Name *</h6>
+                                <input type="text" placeholder="Institute Name" ng-model="institute.inst_name" name="i_name" class="input-fields"
+                                id="full_name" onchange="try{setCustomValidity('')}catch(e){}" required>
+						</div>
+
+						
+                    </div>
+
+
+                </div>
+                <div class="12u" style="width:75%;background-color:white;">
+                    <ul class="actions" style="float:right;">
+                        <li>
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+							<input type="hidden" name="sid" value="{{stream.stream_id}}">
+                                           <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="edit_Institute" value="true">
+                            <input type="submit" value="Submit Changes" id="editInstitute" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </li>
+                    </ul>
+                    
+                </div>
+
+				
+            </div>
+        </div>
+        
+    </form>
+</section>
+<script type="text/javascript">
+</script>

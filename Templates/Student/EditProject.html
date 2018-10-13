@@ -1,0 +1,304 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <form id="editProject">
+        <div class="inner">
+            <!-- <br>
+            <span>
+
+            </span>
+            <hr> -->
+            <div class="row uniform">
+                 <div class="12u" style="background-color:white;">
+
+				<br>
+                <span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+                        <i class="material-icons">account_circle</i>Edit Project
+				</span>
+				<span style="float:right" class="buttons">
+						<a style="color:#3b5998;" href="#/Student/Home">
+							<i class="material-icons" style="font-size:2em !important;">close</i>close</a>
+                 </span>
+				 <HR>
+				 
+			</div>
+                <div class="12u">
+                    
+					<div class="row uniform">
+                    <div class="8u 12u$(xsmall)">
+                            <h6>Title*</h6>
+                            <input type="hidden" name="project_id" value="{{project.project_id}}">
+                            <input type="text" placeholder="Project Title" ng-model="project.project_title" name="project_title" class="input-fields"
+                                id="full_name" pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Title name must be 3 Characters long and can not contain special characters')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required>
+                    </div>
+					<div class="4u 12u$(xsmall)">
+                        <img id="output_image" style="max-width:150px;max-height:100px;float:right;" src="images/project/{{project.project_id}}/{{project.project_image}}"
+                        />
+                        <!-- <center>
+                            <ul class="actions" style="right:0;position:absolute;">
+                                <li>
+                                    <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                                    <input type="hidden" name="email" value="{{cookie.email}}">
+                                    <input type="hidden" name="edit_project" value="true">
+                                    <input type="submit" value="Submit Changes" id="registerStudent" class="button" style="color: white !important;background-color:rgb(155,0,50);" />
+                                </li>
+                            </ul>
+                        </center> -->
+                    </div>
+                    
+						<div class="12u 12u$(xsmall)">
+                            <h6>Challenge</h6>
+                            <select name="project_problem_id" ng-model="project.project_problem_id" class="browser-default" >
+                                <option value="" disabled selected>Select Challenge</option>
+                                <option ng-repeat="problem in problems" value="{{problem.problem_id}}">
+                                    {{problem.problem_title}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Abstract of the project/innovation ( max 150 words)*</h6>
+                            <textarea id="textarea1" name="project_abstract" ng-model="project.project_abstract" class="materialize-textarea input-fields"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Uniqueness/Novelty of your project ( max 100 words)*</h6>
+                            <textarea id="textarea1" name="project_uniqueness" ng-model="project.project_uniqueness" class="materialize-textarea input-fields"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>What exact problem your innovation is trying to solve? (max 100 words)*</h6>
+                            <textarea id="textarea1" name="project_problem_definition" ng-model="project.project_problem_definition" class="materialize-textarea input-fields"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Market Potential and Competitive advantage of your project ( max 100 words)*</h6>
+                            <textarea id="textarea1" name="project_market_potential" ng-model="project.project_market_potential" class="materialize-textarea input-fields"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Mention potential Impact of your solution ( max 100 words)*</h6>
+                            <textarea id="textarea1" name="project_potential_impact" ng-model="project.project_potential_impact" class="materialize-textarea input-fields"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Scope , Design and Resource requirement to make your project to a product/solution ( max 100
+                                words)*
+                            </h6>
+                            <textarea id="textarea1" name="project_scope_resource_requirement" ng-model="project.porject_scope_resource_requirement"
+                                class="materialize-textarea input-fields" data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Background of innovation or prior art ( max 100 words)*</h6>
+                            <textarea id="textarea1" name="background_of_inventor" class="materialize-textarea input-fields" ng-model="project.background_of_inventor"
+                                data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Institute/College/Organization Name*</h6>
+                            <input placeholder="Project Institute Name" ng-model="project.institute_name" name="institute_name" class="input-fields"
+                                id="full_name" type="text" class="validate" pattern="^[A-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Institute/Organization Name must be 3 Uppercase Characters long and can not contain special characters')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>State*</h6>
+                            <select id="state" onchange="displayCities(this.value)" name="institute_state" value="{{ project.institute_state }}" required>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>City*</h6>
+                            <select name="institute_city" id="cities" required>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide Honorific</h6>
+                            <select class="browser-default" ng-model="project.guide_honorific">
+                                <option value="" selected>Mr./Ms./Dr. (Not Selected)</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="Dr.">Dr.</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide First Name</h6>
+                            <input placeholder="Guide First Name" ng-model="project.guide_first_name" class="input-fields" id="full_name" type="text" pattern="^[A-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Guide first name must be 3 Uppercase Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide Last Name</h6>
+                            <input placeholder="Guide Last Name" class="input-fields" ng-model="project.guide_last_name" id="full_name" type="text" pattern="^[A-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Guide last name must be 3 Uppercase Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        
+                        <input type="hidden" name="guide_name" value="{{ project.guide_honorific +' '+ project.guide_first_name +' '+ project.guide_last_name}}">
+                        
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Guide Contact (Mobile Number)</h6>
+                            <input type="text" name="guide_contact" value="" ng-model="project.guide_contact" placeholder="Enter contact number" pattern="[0-9]{10}"
+                                oninvalid="setCustomValidity('Invalid guide Contact Number')" onchange="try{setCustomValidity('')}catch(e){}"
+                            />
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Guide Email</h6>
+                            <input placeholder="Project Guide Email ID" name="guide_email" ng-model="project.guide_email" class="input-fields" id="full_name"
+                                type="text" class="validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" oninvalid="setCustomValidity('Invalid guide Email Address')"
+                                onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide Honorific</h6>
+                            <select class="browser-default" ng-model="project.co_guide_honorific">
+                                <option value="" selected>Mr./Ms./Dr. (Not Selected)</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="Dr.">Dr.</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide First Name</h6>
+                            <input placeholder="Co-Guide First Name" ng-model="project.co_guide_first_name" class="input-fields" id="full_name" type="text" pattern="^[A-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Co-guide first name must be 3 Uppercase Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide Last Name</h6>
+                            <input placeholder="Co-Guide Last Name" ng-model="project.co_guide_last_name" class="input-fields" id="full_name" type="text" pattern="^[A-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Co-guide last name must be 3 Uppercase Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+
+                        <input type="hidden" name="co_guide_name" value="{{ project.co_guide_honorific +' '+ project.co_guide_first_name +' '+ project.co_guide_last_name}}">
+                        
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Co-Guide Contact (Mobile Number)</h6>
+                            <input type="text" name="co_guide_contact" value="" ng-model="project.co_guide_contact" placeholder="Enter contact number"
+                                pattern="[0-9]{10}" oninvalid="setCustomValidity('Invalid co-guide Contact number')" onchange="try{setCustomValidity('')}catch(e){}"
+                            />
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Co-Guide Email</h6>
+                            <input placeholder="Project Guide Email ID" name="co_guide_email" ng-model="project.co_guide_email" class="input-fields"
+                                id="full_name" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" oninvalid="setCustomValidity('Invalid co-guide Email address')"
+                                onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Stages*</h6>
+                            <select name="project_category" ng-model="project.project_category" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Status</option>
+                                <option value="Proof of Concept">Proof of Concept</option>
+                                <option value="Prototype">Prototype</option>
+                                <option value="Product">Product</option>
+                                <option value="Start Up">Start Up</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Stream*</h6>
+                            <select name="project_stream" ng-model="project.project_stream" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Stream</option>
+                                <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                    {{stream.stream_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Branch*</h6>
+                            <select name="project_branch" ng-model="project.project_branch" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Branch</option>
+                                <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                    {{branch.branch_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="1u 12u$(xsmall)">
+                            <h6>Team Size*</h6>
+
+				<select name="team_size" ng-model="project.team_size" class="browser-default" onchange="alert('Edit Team Members Name (Dr/Mr/Ms. <First Name> <Last Name>,Dr/Mr/Ms.<First Name>.<Last Name>,....'), No. of Team Members and No. of Names Should be Same;" required>
+				<option value="" disabled selected>Select Team Size</option>			
+				<option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option> 
+				</select>
+                        </div>
+                        <div class="11u 12u$(xsmall)">                                
+                            <div class="row" ng-repeat="n in [] | range:project.team_size">
+                                <div class='2u 12u$(xsmall)'>
+                                    <h6>Honorific*</h6>
+                                    <select class='browser-default'
+                                    required ng-model="project.team_members[n].honorific" ng-readonly="n===0">
+                                        <option value='' disabled selected>Mr./Ms./Dr.</option>
+                                        <option value='Mr.'>Mr.</option>
+                                        <option value='Ms.'>Ms.</option>
+                                        <option value='Dr.'>Dr.</option>
+                                    </select>
+                                </div>
+                                <div class='2u 12u$(xsmall)'>
+                                    <h6>First Name*</h6>
+                                    <input ng-readonly="n===0" ng-model="project.team_members[n].first_name" placeholder="First Name" id="video_url" type="text" value="{{cookie.first_name}}" required>
+                                </div>
+                                <div class='2u 12u$(xsmall)'>
+                                    <h6>Last Name*</h6>
+                                    <input ng-readonly="n===0" ng-model="project.team_members[n].last_name" placeholder="Last Name" class="input-fields" id="video_url" type="text" value="{{cookie.last_name}}">
+                                </div>
+								<div class='3u 12u$(xsmall)'>
+                                    <h6>Email*</h6>
+                                    <input ng-readonly="n===0" ng-model="project.team_members[n].email_name" placeholder="Email" class="input-fields" id="video_url" type="text" value="{{cookie.email}}">
+                                </div>
+								<div class='2u 12u$(xsmall)'>
+                                    <h6>Contact*</h6>
+                                    <input ng-readonly="n===0" ng-model="project.team_members[n].contact_name" placeholder="Contact" class="input-fields" id="video_url" type="text" value="{{cookie.contact}}">
+                                </div>
+                                <input ng-readonly="n===0" ng-model="project.team_members[n].name" type="hidden" value="{{ project.team_members[n].honorific +' '+ project.team_members[n].first_name +' '+ project.team_members[n].last_name +' '+ project.team_members[n].email_name +' '+ project.team_members[n].contact_name }}" required>                                
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="team_member_names" value="{{ project.team_member_string() }}">
+				        
+						<div class="3u 12u$(xsmall)">
+                            <h6>Video Link</h6> <BR>
+                            <input name="video" placeholder="Video Url" ng-model="project.project_video" class="input-fields" id="video_url" type="text">
+                        </div>
+                        <div class="3u 12u$(xsmall)">
+                            <h6>Report (.pdf file Max 2MB) <BR><BR>
+                               <!--  <a href="pdf/template Content.pdf" style="color:rgb(155,0,50);">Sample pdf</a> -->
+                            </h6>
+                            
+                            <input placeholder="College Name" name="project_report_file" class="input-fields" id="fileToUpload" type="file" class="validate">
+                        </div>
+                        <div class="5u 12u$(xsmall)">
+                            <h6>Image* (.jpg file Max 300KB)
+                                <br>
+                                <a href="pdf/How to Compress the Photo.pdf" style="color:rgb(155,0,50);"> (link to compress Photo(if size > 300KB))</a>
+                            </h6>
+                            <input placeholder="College Name" name="image" class="input-fields" id="fileToUpload" type="file" ng-model="project.project_image"
+                                onchange="preview_image(event);" class="validate">
+                        </div>
+						<div class="12u 12u$(xsmall)">
+								<h6>Do you want to apply for funding?</h6>
+								<select name="funding_flag" class="browser-default" ng-model="project.funding_flag">
+									<option value="" selected>Yes/No(Not Selected)</option>
+									<option value="Y">Yes</option>
+									<option value="N">No</option>
+								</select>
+						</div>
+						
+                    </div>
+
+
+                </div>
+                    <ul class="actions" style="float:right;">
+                        <li>
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="edit_project" value="true">
+                            <input type="submit" value="Submit Changes" id="registerStudent" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        </div>
+    </form>
+</section>
+<script type="text/javascript">
+</script>

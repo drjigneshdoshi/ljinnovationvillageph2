@@ -1,0 +1,628 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 25, 2018 at 06:08 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.16
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `ljivillage`
+--
+CREATE DATABASE IF NOT EXISTS `ljivillage` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ljivillage`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branch_master`
+--
+
+CREATE TABLE IF NOT EXISTS `branch_master` (
+  `branch_id` int(11) NOT NULL AUTO_INCREMENT,
+  `branch_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`branch_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `branch_master`
+--
+
+INSERT INTO `branch_master` (`branch_id`, `branch_name`) VALUES
+(1, 'Mechanical Engineering'),
+(2, 'Manufacturing Engineering'),
+(3, 'Automobile Engineering'),
+(4, 'ELECTRICAL ENGINEERING'),
+(5, 'Electronics and Communication Engineering'),
+(6, 'Instrumentation and Control Engineering'),
+(7, 'Civil Engineering'),
+(8, 'Architecture'),
+(9, 'Computer Engineering'),
+(10, 'Information Technology'),
+(11, 'Information and Communications Technology'),
+(12, 'Master of Computer Applications'),
+(13, 'Pharmacy'),
+(14, 'Applied Sciences'),
+(15, 'Inter Disciplinary'),
+(16, 'Others');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mail_tb`
+--
+
+CREATE TABLE IF NOT EXISTS `mail_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `mail_tb`
+--
+
+INSERT INTO `mail_tb` (`id`, `email`) VALUES
+(1, 'alokmanke@gmail.com'),
+(2, 'dhavalpatel739@gmail.com'),
+(3, 'dilipvaghela16@gmail.com'),
+(4, 'doshijig@gmail.com'),
+(5, 'jigneshdoshi191@gmail.com'),
+(6, 'jigneshdoshi191@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mentor_master`
+--
+
+CREATE TABLE IF NOT EXISTS `mentor_master` (
+  `mentor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `mentor_type` enum('Technical Academic','Financial Marketing','Design','Industry') DEFAULT NULL,
+  `mentor_name` varchar(50) NOT NULL,
+  `gender` enum('Male','Female') DEFAULT NULL,
+  `stream` int(11) DEFAULT NULL,
+  `branch` int(11) DEFAULT NULL,
+  `photo` varchar(70) NOT NULL,
+  `organization_name` varchar(50) NOT NULL,
+  `specialization_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`mentor_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+
+--
+-- Dumping data for table `mentor_master`
+--
+
+INSERT INTO `mentor_master` (`mentor_id`, `user_id`, `mentor_type`, `mentor_name`, `gender`, `stream`, `branch`, `photo`, `organization_name`, `specialization_name`) VALUES
+(1, 6, 'Industry', 'Archit Somani', 'Male', 2, 4, '', 'Strawberry R&D Labs', 'IoT / Image Processing'),
+(2, 7, 'Industry', 'Nikhil Shah', 'Male', 2, 10, '', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(3, 8, 'Industry', 'Chinmay Mahanta', 'Male', 2, 3, '', 'Tata Motors', 'Automobile Design'),
+(4, 9, 'Technical Academic', 'Pritesh Bhatia', 'Male', 2, 1, '', 'GLS Design School', 'Product Design'),
+(5, 10, 'Industry', 'Nikunj Thakkar', 'Male', 2, 9, '', 'Dataone Innovations Labs Pvt Ltd', 'Cloud Computing '),
+(6, 11, 'Industry', 'Shaunak Shah', 'Male', 2, 5, '', 'Automation System Engineers Pvt Ltd', 'Circuit Design'),
+(7, 12, 'Industry', 'Indravadan Gajjar', 'Male', 2, 1, '', 'Consultant', 'Robotic Solutions'),
+(8, 13, 'Industry', 'Hemant Desai', 'Male', 2, 1, '', 'Microcut Technics', 'Mechanical tools & Manufacturing'),
+(9, 14, 'Industry', 'Ashish Bhatt', 'Male', 2, 3, '', 'Ford Motors', 'Automobile Design'),
+(10, 15, 'Industry', 'Naren Vadher', 'Male', 2, 1, '', 'VACUNAIR ENGINEERING CO PVT LTD', 'Machine Design'),
+(11, 16, 'Design', 'Prakash vani', 'Male', 2, 1, '', 'Platypus Designs Pvt Ltd', 'Product Design'),
+(12, 0, 'Industry', 'Aatish Motipara', 'Male', 2, 9, '', 'cactus Creatives', 'VR,AR'),
+(13, 0, 'Industry', 'Srinivas Chamarthy', 'Male', 2, 5, '', 'CYME Automation', 'Signal processing, Circuit designing '),
+(14, 0, 'Industry', 'Kodar Bhai', 'Male', 2, 1, '', 'Independent innovator (worked with NIF and visitin', 'Design, Manufacturing and Innovation'),
+(15, 0, '', 'Dr. R J Amin', 'Male', 2, 1, '', 'Retired Professor ', 'Agriculture expert and innovator'),
+(16, 0, 'Industry', 'Dr. Ganesh Prasad', 'Male', 2, 1, '', 'Ex. IPR Scientist & Independent Innovator', 'Energy, Plasma and Recycling'),
+(17, 0, 'Industry', 'Hitesh Vaghela', 'Male', 2, 1, '', 'PRL Scientist', 'Manufacturing and Fabrication '),
+(18, 0, 'Industry', 'Sanandan (Sandy) Sudhir', 'Male', 2, 1, '', 'Invent India (President)', 'product design (Idea to Product)'),
+(19, 0, 'Industry', 'Sandip Dave', 'Male', 2, 1, '', 'Neptune Industries (President)', 'Pneumatic & Manufacturing'),
+(20, 0, 'Industry', 'N.M.Gami', 'Male', 2, 1, '', '', 'Manufacturing and Design'),
+(21, 152, 'Industry', 'Bhushan Mehta', 'Male', 2, 1, '', 'LJP', 'Mechanical'),
+(22, 153, 'Industry', 'Mitesh Patel', 'Male', 2, 1, '', 'LJP', 'Mechanical'),
+(23, 154, 'Industry', 'Zishan Hakim', 'Male', 2, 5, '', 'LJP', 'EC'),
+(24, 155, 'Industry', 'Mohit Modi', 'Male', 2, 1, '', 'LJP', 'Mechanical'),
+(25, 156, 'Industry', 'Debopriya Chakroborty', 'Male', 2, 0, '', 'LJP', 'BioMedical'),
+(26, 162, 'Industry', 'ALOK MANKE', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(27, 163, 'Industry', 'BHAVIN SHAH', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(28, NULL, 'Industry', 'SUJOY PAL', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(29, 165, 'Industry', 'SANGEETA   RAJOLE', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(30, 166, 'Industry', 'TEJAS MEHTA', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(31, 167, 'Industry', 'MEETU  JOSHI', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(32, 168, 'Industry', 'SHANTI  VERMA', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(33, 169, 'Industry', 'LAJJA CHOKSI', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(34, 170, 'Industry', 'MONICA  GAHLAWAT', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(35, 171, 'Industry', 'URJA MANKAD', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(36, 172, 'Industry', 'RITISHA  PARMAR', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(37, 173, 'Industry', 'HETA PARIKH', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(38, 174, 'Industry', 'RINKAL SARDHARA', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(39, 175, 'Industry', 'SHEENU SINGH', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(40, 176, 'Industry', 'SARFARAJ PATEL', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(41, 177, 'Industry', 'DHAVAL PATEL', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(42, 178, 'Industry', 'ANKUR DEY', 'Male', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(43, 179, 'Industry', 'SONA GADANI', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(44, 180, 'Industry', 'A ANURADHA', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(45, 181, 'Industry', 'ANU THOMAS', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(46, 182, 'Industry', 'JINAL BAXI', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(47, 183, 'Industry', 'VAIBHAVI CHOKSI', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(48, 184, 'Industry', 'PANKTI PATEL', 'Female', 2, 4, 'photo.jpg', 'IoT Data Systems', 'IoT & Cloud Computing'),
+(54, 190, 'Industry', 'Vinay', 'Male', 3, 2, '123.jpg', 'LJICA', 'Director '),
+(53, 189, 'Industry', 'Charmi Buch', 'Female', 3, 1, '123.jpg', 'Shimala', 'Manali');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `problem_master`
+--
+
+CREATE TABLE IF NOT EXISTS `problem_master` (
+  `problem_id` int(11) NOT NULL AUTO_INCREMENT,
+  `problem_title` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_abstract` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `problem_stream` int(11) NOT NULL,
+  `problem_branch` int(11) NOT NULL,
+  `problem_desired_outcome` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_applications` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_tools` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_tentative_workflow` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_boundary_conditions` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `problem_status` enum('0','1') COLLATE utf8_unicode_ci NOT NULL,
+  `file_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_By_emailid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`problem_id`),
+  UNIQUE KEY `problem_title` (`problem_title`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
+
+--
+-- Dumping data for table `problem_master`
+--
+
+INSERT INTO `problem_master` (`problem_id`, `problem_title`, `problem_abstract`, `problem_stream`, `problem_branch`, `problem_desired_outcome`, `problem_applications`, `problem_tools`, `problem_tentative_workflow`, `problem_boundary_conditions`, `problem_status`, `file_name`, `created_By_emailid`) VALUES
+(24, 'LIFE SCIENCE PROJECT ON INTERNET OF THINGS 12', 'this projectis about IoT application in Life Science abs 12', 2, 2, 'jijijijiji 12', 'jijijijijijijijijiji 12', 'tytytyt 12', 'jijij gg2', 'jijij 12', '1', '24problem.pdf', 'nikunj@dataone.io'),
+(26, 'INNOVATIVE HANDICAP WHEELCHAIR', 'Based on the literature review of referred research papers, it can be found that designs of existing wheelchairs are not ergonomic because of its rigidness. Due to its rigidness, the accommodation capability of wheelchair is low and its compactness is decreased. It cannot be accommodated into vehicle due to it. The aim of project is to eliminate limitations of wheelchair design by modifying its frame design and seat design. After deciding the design, modelling will be done in Cad software. \r\n', 3, 1, 'bbb', 'Applications', 'bb', 'bbb', 'bbbb', '1', '26problem.pdf', 'nikunj@dataone.io'),
+(29, 'LIBRARY SMART STOCK SYSTEM', 'Library Smart Stock System', 3, 1, 'Library Smart Stock System', 'Library Smart Stock System', 'Library Smart Stock System', 'Library Smart Stock System', 'Library Smart Stock System', '1', '29problem.pdf', ''),
+(30, 'WATER TEMPARTURE MANAGEMENT ', 'Water Temparture Management ', 1, 9, 'Water Temparture Management ', 'Water Temparture Management ', 'Water Temparture Management ', 'Water Temparture Management ', 'Water Temparture Management ', '1', '30problem.pdf', ''),
+(31, 'TESTING 321', 'Description Testing 321', 3, 12, 'Desired Outcome Testing 321', 'Applications Testing 321', 'Tools Testing 321', 'Workflow Testing 321', 'Boundary conditions Testing 321', '1', '31problem.pdf', 'doshijig@gmail.com'),
+(32, 'TEST 4321', 'test 4321', 3, 2, 'test 4321', 'test 4321', 'test 4321', 'test 4321', 'test 4321', '1', '32problem.pdf', 'nikunj@dataone.io');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_evaluation`
+--
+
+CREATE TABLE IF NOT EXISTS `project_evaluation` (
+  `project_id` int(11) DEFAULT NULL,
+  `mentor_id` int(11) DEFAULT NULL,
+  `mark1` int(11) NOT NULL,
+  `mark2` int(11) NOT NULL,
+  `mark3` int(11) NOT NULL,
+  `mark4` int(11) NOT NULL,
+  `mark5` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `project_evaluation`
+--
+
+INSERT INTO `project_evaluation` (`project_id`, `mentor_id`, `mark1`, `mark2`, `mark3`, `mark4`, `mark5`, `created_at`, `updated_at`) VALUES
+(70, 1, 0, 0, 0, 0, 0, '2017-12-19 07:20:12', NULL),
+(23, 1, 0, 0, 0, 0, 0, '2017-12-18 07:15:47', NULL),
+(24, 2, 0, 0, 0, 0, 0, '2017-12-19 07:20:48', NULL),
+(25, 25, 0, 0, 0, 0, 0, '2018-01-22 06:02:50', NULL),
+(21, 25, 0, 0, 0, 0, 0, '2018-01-22 06:02:50', NULL),
+(27, 25, 0, 0, 0, 0, 0, '2018-01-22 06:27:42', NULL),
+(20, 23, 0, 0, 0, 0, 0, '2018-01-29 04:42:10', NULL),
+(19, 23, 8, 6, 8, 5, 5, '2018-01-29 04:42:10', '2018-01-29 04:54:39'),
+(22, 5, 0, 0, 0, 0, 0, '2018-05-02 10:27:37', NULL),
+(18, 5, 0, 0, 0, 0, 0, '2018-05-02 10:27:37', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_master`
+--
+
+CREATE TABLE IF NOT EXISTS `project_master` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) DEFAULT NULL,
+  `group_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `project_title` varchar(100) NOT NULL,
+  `project_category` enum('Proof of Concept','Prototype','Product','Start Up') DEFAULT NULL,
+  `project_stream` int(11) DEFAULT NULL,
+  `project_branch` int(11) DEFAULT NULL,
+  `institute_name` varchar(100) NOT NULL,
+  `institute_state` varchar(30) NOT NULL,
+  `institute_city` varchar(30) NOT NULL,
+  `team_size` enum('1','2','3','4','5','6','7','8','9') DEFAULT NULL,
+  `team_member_names` varchar(300) NOT NULL,
+  `project_teammebers_email` varchar(500) NOT NULL,
+  `project_teammmebers_contact` varchar(200) NOT NULL,
+  `guide_name` varchar(50) DEFAULT NULL,
+  `guide_email` varchar(255) DEFAULT NULL,
+  `guide_contact` bigint(20) DEFAULT NULL,
+  `co_guide_name` varchar(50) DEFAULT NULL,
+  `co_guide_email` varchar(255) DEFAULT NULL,
+  `co_guide_contact` bigint(20) DEFAULT NULL,
+  `background_of_inventor` varchar(500) NOT NULL,
+  `project_abstract` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `project_uniqueness` varchar(500) NOT NULL,
+  `project_problem_definition` varchar(500) NOT NULL,
+  `project_market_potential` varchar(500) NOT NULL,
+  `project_potential_impact` varchar(500) NOT NULL,
+  `porject_scope_resource_requirement` varchar(500) NOT NULL,
+  `project_image` varchar(50) NOT NULL,
+  `project_video` varchar(50) DEFAULT NULL,
+  `project_report_file` varchar(50) DEFAULT NULL,
+  `project_selected` enum('0','1') DEFAULT NULL,
+  `project_year` int(4) NOT NULL,
+  `project_closed_flag` enum('0','1') NOT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
+
+--
+-- Dumping data for table `project_master`
+--
+
+INSERT INTO `project_master` (`project_id`, `student_id`, `group_id`, `project_title`, `project_category`, `project_stream`, `project_branch`, `institute_name`, `institute_state`, `institute_city`, `team_size`, `team_member_names`, `project_teammebers_email`, `project_teammmebers_contact`, `guide_name`, `guide_email`, `guide_contact`, `co_guide_name`, `co_guide_email`, `co_guide_contact`, `background_of_inventor`, `project_abstract`, `project_uniqueness`, `project_problem_definition`, `project_market_potential`, `project_potential_impact`, `porject_scope_resource_requirement`, `project_image`, `project_video`, `project_report_file`, `project_selected`, `project_year`, `project_closed_flag`) VALUES
+(25, 43, 'EE25', 'Design  analysis', 'Proof of Concept', 1, 4, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '1', 'Ms. Shefa Shah', '', '', 'Mr. Nimesh Prabhakar', 'nimpra28@gmail.com', 9898987878, '  ', '', 0, 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'Ã¢â‚¬Â¢ I have worked on a project named as Ã¢â‚¬Å"GARBAGE COLLECTOR TROLLEYÃ¢â‚¬Â', 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'A wideband planar antenna is designed for S band Applications especially for RADAR systems using Metamaterial at 2.5 GHz Frequency. The proposed antenna is designed between 2.4GHz â€“ 2.6GHz frequency,while measuring parameters will be 10dB Returnloss BW upto 180MHz & minimum gain requirements will be 5dB. Also with the enhancement of Bandwidth , size minituraisation has been carried out while helps in various S band RADAR applications such as weather radar, surface ship radar etc. Comparison ha', 'Winter.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(24, 42, 'PH24', 'Design of High Linearity Current ', 'Proof of Concept', 5, 13, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '1', 'Ms. Jinal Kiritbhai', '', '', 'Mr. Nimesh Prabhakar', 'nimpra28@gmail.com', 8401475690, '  ', '', 0, 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180  process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 nm CMOS process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 nm CMOS process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 nm CMOS process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 nm CMOS process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 nm CMOS process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'designed and simulated using Cadence Virtuoso design tool. Mixer will be designed using 180 process and used in S band receiver for down converting  RF frequency to IF frequency.\r\n', 'Water lilies.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(23, 40, 'CE23', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Proof of Concept', 3, 9, 'Computer Engineeing', 'Gujarat', 'Ahmedabad', '1', 'Mr. VIPULKUMAR SHAH', '', '', 'Mr. Gayatri Pandi', 'gayatree.jain@gmail.com', 9825829356, '  ', '', 0, 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Design of Optimal Data Placemnt Strategy in Hadoop Environment', 'Winter.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(21, 38, 'IT21', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY', 'Start Up', 1, 10, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '1', 'Mr. Shardul Gurjar', '', '', 'Mr. Krunal Panchal', 'krunaljpanchal@gmail.com', 9429301454, '  ', '', 0, 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'IMPROVEMENT IN PICTURE PUZZLE DETECTION USING BOT IN AUGMENTED REALITY.\r\n', 'Sunset.jpg', '', '4410601_FC.pdf', '1', 2018, '0'),
+(22, 39, 'CE22', 'A Novel Approach Towards Opinion Mining to Structurize Online Reviews for Tourism Using Twitter Data', 'Proof of Concept', 1, 9, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '1', 'Mr. DHRUVIL MODI', '', '', 'Mr. Krunal Panchal', 'krunaljpanchal@gmail.com', 9429301454, '  ', '', 0, 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'The tourism industry in any location is highly dependent on previous visitors opinions and their perceptions. However, due to the large amount of available opinion text, tourists are often overwhelmed with information. As a consequence, tourists find it extremely difficult to obtain useful opinions to make a decision about destinations. Opinion mining is a type of natural language processing for tracking the mood of the public about a particular tourist place. Opinion mining involves building a ', 'Winter.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(20, 37, 'IT20', 'Transistor tester kit', 'Prototype', 1, 10, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '3', 'Ms. shreyansi Patel, Ms. Kalgi sheth, Ms. shaili Patel', '', '', 'Mr. Jay thakar', 'jaythakar.8887@gmail.com', 8141486428, '  ', '', 0, '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', '"Transistors are one of the most widely used electronic devices. As well, transistor are the most failing devices in the electronic world. \r\n\r\nFor school students and college freshers , learning about the transistors is a difficult task, let alone testing it using multimeters.\r\nHence an efficient , easy to use transistor tester kit has been designed , which allows the user to check wether a transistor is working properly or not.\r\n\r\nDevices used in the project are capacitor, resistors, ic 555, co', 'Water lilies.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(19, 35, 'CIE19', 'my name is khan', 'Proof of Concept', 3, 7, 'LJ Institute of Engineering and Technology', 'Arunachal Pradesh', 'Naharlagun', '1', 'Mr. rathod vikram', '', '', 'Mr. alok manke', 'aloksir@gmail.com', 9898987878, '  ', '', 0, 'sfdhsfghfgth', 'zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf zdfvbzdfbdf ', 'zdfbdzfbdz', 'zdbzsdgb', 'zbndzg', 'zdfbzdfb', 'djdghjg', 'Winter.jpg', '', '4450603(FON).pdf', '1', 2018, '0'),
+(18, 34, 'ICT18', 'mynewproject', 'Proof of Concept', 3, 11, 'ljmca', 'Gujarat', 'Ahmedabad', '1', 'Mr. viraj patel', '', '', 'Mr. aloksir manke', 'aloksir@gmail.com', 9898982727, '  ', '', 0, 'xtcvgjhbkjnlkm', 'qwertyuio', 'erfghjkl', 'setdrytfvybhkjnk', 'rsetdrjyfuktgybuihnjlkm', 'rxtrctvyhbkjnkm', 'etdrcytvybnjm', 'Word Art (2).JPEG', '', 'cse_syllabus.pdf', '0', 2018, '0'),
+(26, 44, 'AE26', 'concept car having thermoelectric generator', 'Prototype', 1, 3, 'LJ Institute of Engineering and Technology', 'Gujarat', 'Ahmedabad', '3', 'Mr. mujaffar shaikh, Mr. dipeshkumar govindiya, Mr. virajkumar bhadani', '', '', 'Mr. Kartik Trivedi', 'kartikmtrivedi@outlook.com', 8866123755, '  ', '', 0, 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Using thermoelectric generator which works on seebeck effect can eliminate conventional generators(AC/DC). Battery can be charged using thermoelectric generator fitted in car.\r\n', 'Water lilies.jpg', '', '4410601_FC.pdf', '0', 2018, '0'),
+(27, 45, 'ME27', 'Test', 'Proof of Concept', 1, 1, 'LJICA', 'Gujarat', 'Ahmedabad', '1', 'Mr. Amit Kothari', '', '', 'Mr. Aloksir Manke', 'aloksir@gmail.com', 9426326394, 'Ms. Dipti Kothari', 'abd@abc.com', 9825967723, 'test', 'Test', 'Test', 'test', 'test', 'test', 'test', 'financial.jpeg', '', '881711252524510.pdf', '0', 2018, '0'),
+(28, 47, 'MAE28', 'cep', 'Proof of Concept', 1, 2, 'ljp', 'Gujarat', 'Ahmedabad', '2', 'Mr. tttt uuuuu, Mr. nnnnn vvvvv', '', '', 'Mr. kkkkk ggggg', 'kkk@gmail.com', 9725167067, '  ', '', 0, 'fghkm', 'gjhfgjghm', 'kgkgfuk', 'jfgmgh', 'khjkljh', 'svsdb', 'klj,gh', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(29, 48, 'CE29', 'Test', 'Proof of Concept', 2, 9, 'test', 'Gujarat', 'Ahmedabad', '1', 'Mr. sdf wee', '', '', 'Mr. asd asdf', 'asdf@gmail.com', 9909012890, '  ', '', 0, 'test', 'test  asdfe', 'test  asdf', 'test atef', 'test  tasef', 'test asefd', 'test as', 'website.jpg', '', 'SEM_4_CE_2017_MSE_Resultsheet_.pdf', '0', 2018, '0'),
+(30, 51, 'CE30', 'computer programmin', 'Proof of Concept', 2, 9, 'ljp', 'Gujarat', 'Ahmedabad', '2', 'Mr. KUNAL SHAH, Mr. SOYeb MANSURI', '', '', 'Mr. soyeb mansuri', 'soyeb@gmail.com', 9724418804, '  ', '', 0, 'jgjgjgj', 'asdas', 'jgjg', 'jgjgjghj', 'jhgjgj', 'jhgjgj', 'jhgjgj', 'images.jpg', '', 'MSE_2_ECHM.pdf', '0', 2018, '0'),
+(31, 49, 'ME31', 'Multi Waste Cleaner', 'Prototype', 1, 1, 'lj polytechnic', 'Gujarat', 'Ahmedabad', '4', 'Mr. xyz xyz, Mr. xyz xyz, Mr. xyz xyz, Mr. xyz xyz', '', '', 'Mr. dipak ranpura', 'dipak.yuva60@yahoo.com', 9016036290, '  ', '', 0, 'To increase the storage of waste product.\r\nï‚· Man power is less.\r\nï‚· Due to lower price is able to meet the price sensitive demand.', 'Multi waste cleaner  is a device that uses an air pump (a centrifugal fan in all but some of the very oldest models), to create a partial vacuum to suck up dust and dirt, usually from floors, and from other surfaces such as upholstery and draperies. This type of waste cleaner is used to collect plastic products and any type of waste which is fallen on ground. This waste cleaner can be used in party plots, gardens and in industrial use also. The waste is collected in dustbag  for later disposal. ', 'Easy to operate.\r\nEasy to suck the waste products.\r\nIt is used in gardens, party plots, big and small industries.\r\nLower in price strategy and able to give best offer to customer.', 'Multi waste cleaner  is a device that uses an air pump (a centrifugal fan in all but some of the very oldest models), to create a partial vacuum to suck up dust and dirt, usually from floors, and from other surfaces such as upholstery and draperies', 'To increase the storage of waste product.\r\nMan power is less.\r\nDue to lower price is able to meet the price sensitive demand.', 'To increase the storage of waste product.\r\nï‚· Man power is less.\r\nï‚· Due to lower price is able to meet the price sensitive demand.', 'To increase the storage of waste product.\r\nï‚· Man power is less.\r\nï‚· Due to lower price is able to meet the price sensitive demand.', '1.JPG', '', 'FILE-3.pdf', '0', 2018, '0'),
+(32, 50, 'ME32', 'bullock cart mechanism', 'Prototype', 1, 1, 'LJP', 'Gujarat', 'Ahmedabad', '1', 'Mr. xyz yzw', '', '', 'Mr. xyz xyz', 'nisarg.thakker@ljinstitutes.edu.in', 9925113000, 'Mr. xyz xyz', 'xyz@gmail.com', 9925113000, 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', 'This is a bullock cart with material lifting and dumping mechanism being\r\neffected using axels, spur and pinion gears, lead screw and nut mechanism\r\nwith manual input to show the mechanism to be adopted in low cost to the\r\nbullock. This project is helpful those peoples who are lifting or dumping\r\nthe load with the use of cart for transportation.', '1.jpg', '', 'MAYUR MARKET REPORT 22eeyd.pdf', '0', 2018, '0'),
+(33, 53, 'CE33', 'computer hardware', 'Proof of Concept', 1, 9, 'khkjh', 'Gujarat', 'Ahmedabad', '1', 'Mr. soyeb mansuri', '', '', 'Mr. nilay parekh', 'nilay@gmail.com', 9913885777, '  ', '', 0, 'jkhkjh', 'jhg', 'jhgkjgh', 'kjhkjh', 'kjhk', 'jh', 'fdfdfd', 'images.jpg', '', 'MSE_2_ECHM.pdf', '0', 2018, '0'),
+(34, 52, 'ME34', 'Hybrid Bike', 'Prototype', 1, 1, 'Indus', 'Gujarat', 'Ahmedabad', '1', 'Mr. JBC Chhatbar', '', '', 'Mr. Jignesh Chhatbar', 'jigneshchhatbar@gmail.com', 9662185684, '  ', '', 0, 'Mechanical engineering', 'Working on electricity and petrol.', 'Hybrid', 'Automobile', 'Pollution free', 'Market', 'Battery expert lithium iron battery', 'IMG_3445.JPG', '', 'CardMasters.pdf', '0', 2018, '0'),
+(35, 55, 'CE35', 'matamatics triks', 'Proof of Concept', 1, 9, 'kjk', 'Gujarat', 'Ahmedabad', '1', 'Ms. payal patel', '', '', 'Ms. hemangini sharma', 'hema@gmail.com', 9598974854, '  ', '', 0, 'kjkj', 'jkhjkh', 'jhkjhjhjh', 'hkjh', 'jkj', 'kjk', 'kjkj', 'index.jpg', '', 'MSE_2_ECHM.pdf', '0', 2018, '0'),
+(36, 57, 'ME36', 'solar water pumping ', 'Prototype', 1, 1, 'L J POLYTECHNIC ', 'Gujarat', 'Ahmedabad', '1', 'Mr. ALPESH PATEL', '', '', 'Mr. ALPESH PATEL', 'alpeshpatel031@gmail.com', 9712289987, '  ', '', 0, 'A', 'the project is regarding how to utilize solar energy for water pumping in irrigation and domestic purpose, it will save energy and promote utilization of solar energy which is renewable and abundant. ', 'the project is regarding how to utilize solar energy for water pumping in irrigation and domestic purpose  ', 'the project is regarding how to utilize solar energy for water pumping in irrigation and domestic purpose, it will save energy and promote utilization of solar energy which is renewable and abundant. ', 'this project if commercialize then very helpfully for people ,\r\nsave energy , no pollution  ecofriendly ', 'this project if commercialize then very helpfully for people ,\r\nsave energy , no pollution  ecofriendly ', 'it having good scope, dc moter, solar panel etc', 'image2.jpeg', '', 'z1yvwEQfikOFCOJKWWCnLCBpLQptldjYNUcd1ADDFFRFObbleE', '0', 2018, '0'),
+(37, 62, 'ME37', 'LJ Innovation Village Web site', 'Proof of Concept', 1, 1, 'lj polytechnic', 'Gujarat', 'Ahmedabad', '2', 'Mr. dddd ggg, Mr. ssss hhhh', '', '', 'Mr. alok manke', 'alok@gmail.com', 9834567994, '  ', '', 0, 'fgjghj ytrut', 'wwwweee ttt', 'jgj gh,g,', 'gkgk jgyk', 'gjy jytj', 'kytkyt tyjtyj', 'htjtyj jjy', '0.jpg', '', '104.pdf', '0', 2018, '0'),
+(38, 63, 'AE38', 'AUTOMOBILE', 'Prototype', 1, 3, 'L J POLYTECHNIC', 'Gujarat', 'Ahmedabad', '4', 'Mr. HARDIK PATEL, Mr. JIGNESH MEVANI, Mr. ALPESH THAKOR, Ms. ANUSHKA SHARMA', '', '', 'Mr. NARENDRA MODI', 'narendramodi@bjp.com', 9998949312, 'Mr. AMIT SHAH', 'amitshah@bjp.com', 9033677345, 'ANANT SIR', 'AUTOMOBILE DEPARTMENT', 'AUTOMOBILE DEPARTMENT FACULTIES', 'COLLEGE PROBLEM', 'SUPERB POTENTIAL', 'HUNDRED PERCENT', 'NO REQUIREMENTS', '_DSC6402.jpg', '', 'AMC-Application-Form.pdf', '0', 2018, '0'),
+(39, 65, 'PH39', 'XYZ', 'Prototype', 1, 13, 'lj', 'Himachal Pradesh', 'Mandi', '3', 'Ms. hjcsc dwdqw, Mr. jmioj ndwqdqw, Mr. jiji jij', '', '', 'Mr. scascccas sddd', 'ripalgole2589@gmail.com', 9824947418, '  ', '', 0, 'wdqwdqwdqwd', 'abcvdvd', 'qfbbfdfbfgbgfb', 'w', 'wdqwdqdqw', 'wdqwdqwdqwd', 'wdwqdwqdqdqwdq', 'amk.jpg', '', 'KTG & Thermodynamics.pdf', '0', 2018, '0'),
+(40, 66, 'AE40', 'dfhfhfdzhfd', 'Start Up', 6, 3, ' oihoiliooihoi', 'Odisha', 'Barbil', '4', 'Mr. kguygiu iugiujg, Mr. jhyuyhgfiu iugiug, Ms. yhuighikujh ihoiho, Mr. hgkijghkj juygf', '', '', 'Mr. jfuyfiuygi iugiug', 'jhfjyhfhyhgu@kjghkj.com', 9824242424, 'Mr. kuyiuytgiui asdfasfsa', 'kjgujguj@kljhkljh.com', 9825252525, '  iuhgiuh', 'dfhdc vx', 'jklk ij lk lij l;kj ;', 'l ;lkj; lj; lj;l ;l ;l;lui ghugyfuh juh', ' ikuh iku giu', ' iugikuj iuh ', 'oiu hoioiuyiu ', 'download.jpg', '', 'Thought_Power_86 Pages.pdf', '0', 2018, '0'),
+(41, 64, 'ME41', 'Two face broom', 'Proof of Concept', 1, 1, 'L J POLYTECHNIC', 'Gujarat', 'Ahmedabad', '4', 'Mr. yagnesh anavadiya, Mr. yagnesh anavadiya, Mr. yagnesh anavadiya, Mr. yagnesh anavadiya', '', '', 'Mr. Yagnesh Anavadiya', 'yagneshanavadiya@gmail.com', 8487001548, 'Mr. yagnesh anavadiya', 'yagneshanavadiya@gmail.com', 8487001548, 'experience', 'improve way of cleaning and used as showpiece in home.', 'less space required to store', 'try to use broom as dshow piece and for cleaning ', 'no item available in market', 'no', 'sheet metal shp,welding shop', 'project.jpg', '', 'harcourt.pdf', '0', 2018, '0'),
+(42, 69, 'EC42', 'SENSOR DATA INTERFACING THROUGH WIRELESS TECHNOLOGY', 'Prototype', 1, 5, 'LJP', 'Gujarat', 'Ahmedabad', '1', 'Mr. Alpesh Thesiya', '', '', 'Mr. Alpesh Thesiya', 'alpesh.thesiya@gmail.com', 7574875615, '  ', '', 0, 'NA', 'Wireless communication is growing rapidly to touch every aspect of our lives. Besides communication, it now allows technologies like Machine to Machine (M2M) and the Internet of Things (IoT) to evolve, for instance. While there are modules that transmit the data from our body to the cloud, there are also modules that send that data to our mobile phones or laptops for us to analyse. Then there are modules that can be embedded in our shoes so we can know, for instance, how much we have walked or r', 'The integral part of a device that enables communication is an interface. No communication is possible without it. But the important thing to understand is that, the interface should allow minimum power consumption during data transfer and be efficient at the same\r\ntime. With wired communication, the efficiency has not been much of a concern, though power has always been. Now, with the advent of wireless communication, the wired interfaces are getting replaced with wireless interfaces like inter', 'NA', 'There are certain transceivers that notonly offer a complete but also a high performance mixed-signal system and RF on a single chip. In this category, there are some input/output RF based transceivers compatible with ZigBee standards that incorporate different layers of elements into another layer, facilitating a fast deployment feature ', 'NA', 'NA', 'alpesh_Photo.jpg', '', 'Untitled.jpg', '0', 2018, '0'),
+(43, 71, 'ME43', 'TABLET PRESS MACHINE', 'Prototype', 1, 1, 'LJ Polytechnic', 'Gujarat', 'Ahmedabad', '3', 'Mr. BHAVIK BHALARA, Mr. UTSAV BHAKODIYA, Mr. AJINKYA ASNIKAR', '', '', 'Mr. MITESHKUMAR PATEL', 'miteshrpatel03@gmail.com', 9725199477, 'Mr. HITESHKUMAR SUTHAR', 'mitesh121190@gmail.com', 8487077499, 'Apart from its use in the pharmaceutical industries for manufacturing varieties of\r\ntablets, it can also be used to manufacture illicit drugs, cleaning products and\r\ncosmetics. All tablet press employs the same basic principle of compressing. The development of\r\ntablet press has been a continuous process. In the past, we have hand driven tablet press\r\nwhich have been modernized to electrical driven tablet press.', 'A tablet press is a mechanical device that compresses powder into tablets of uniform\r\nsize and weight. A press can be used to manufacture tablets. To form a tablet, the\r\ngranulated material must be metered into a cavity formed by two punches and a die,\r\nand then the punches must be pressed together with great force to fuse the material\r\ntogether. A tablet is formed by the combined pressing action of two punches and a\r\ndie. In the first step of a typical operation, the bottom punch is lowered in ', 'Tablet press also referred to as tableting machine, pharmaceutical tablet press, tablet\r\ncompressing machine or tablet punching machine is a mechanical device that\r\ncompresses powders into tablets of uniform size, shape, and weight containing\r\napproximately the same quantity of active pharmaceutical ingredient (API) and\r\nexcipients.', 'Apart from its use in the pharmaceutical industries for manufacturing varieties of\r\ntablets, it can also be used to manufacture illicit drugs, cleaning products and\r\ncosmetics. All tablet press employs the same basic principle of compressing. The development of\r\ntablet press has been a continuous process. In the past, we have hand driven tablet press\r\nwhich have been modernized to electrical driven tablet press.', 'This is connected to the feed shoe and it is where the granules/powder mixtures are poured into\r\nprior to tableting or compression. The hopper can be filled manually or by using mechanical\r\nequipment during subsequent tableting.', 'Apart from its use in the pharmaceutical industries for manufacturing varieties of\r\ntablets, it can also be used to manufacture illicit drugs, cleaning products and\r\ncosmetics. All tablet press employs the same basic principle of compressing. The development of\r\ntablet press has been a continuous process. In the past, we have hand driven tablet press\r\nwhich have been modernized to electrical driven tablet press.', 'Apart from its use in the pharmaceutical industries for manufacturing varieties of\r\ntablets, it can also be used to manufacture illicit drugs, cleaning products and\r\ncosmetics. All tablet press employs the same basic principle of compressing. The development of\r\ntablet press has been a continuous process. In the past, we have hand driven tablet press\r\nwhich have been modernized to electrical driven tablet press.', 'tpm.JPG', '', 'A Project Report On TPM-.pdf', '0', 2018, '0'),
+(44, 72, 'EC44', 'Bluetooth based home automation system', 'Prototype', 1, 5, 'L J polytechnic', 'Gujarat', 'Ahmedabad', '1', 'Ms. DIVYA PARMAR', '', '', 'Ms. DIVYA PARMAR', 'divyaparmar2094@gmail.com', 7405845405, 'Ms. Zeel Patel', '', 9909420187, 'To develop a Bluetooth based home automation\r\nsystem with Arduino UNO Board and an Android\r\napplication.', 'To develop a Bluetooth based home automation\r\nsystem with Arduino UNO Board and an Android\r\napplication.\r\nâ€¢ Remote controlled home automation system provides\r\na simpler solution with Android application\r\ntechnology.', 'This project can provide the facility of monitoring all the\r\nappliances with in the communication range through\r\nBluetooth.', 'When the new users want to connect, first\r\ndownload application software and then\r\nconfiguration must be done.', 'The schematic of Arduino is open source, for the future\r\nenhancement of the project board can be extended to add\r\nmore hardware features.', 'There is no need for extra training of that person who is\r\nusing it.\r\nâ€¢ All the control would be in your hands by using this home\r\nautomation system.', 'Remote operation is achieved by any smartphone/Tablet\r\netc., with Android OS, upon a GUI\r\n(Graphical User Interface) based touch screen OPERATION\r\n', 'Untitled-1.jpg', '', 'elementz_0662553001466424203BLUETOOTH BASED HOME A', '0', 2018, '0'),
+(45, 75, 'EE45', 'Smart Watch', 'Proof of Concept', 2, 4, 'Indus institute of technology and engineering', 'Gujarat', 'Ahmedabad', '1', 'Mr. Vivek Dhagia', '', '', 'Mr. Ruchit Soni', 'vivekdhagia.el.engg@gmail.com', 9877489744, 'Mr. Ruchit Soni', 'vivekdhagu@gmail.com', 7889585577, 'For one cycle of 360\r\neach step would be of 60\r\ninterval for a six step inverter. It\r\nwould be gated at regular intervals of 60\r\n0\r\nin proper sequence so that Three Phase AC\r\nVoltage is synthesized at the output terminals of a six step inverter.', 'Three Phase Inverter is a device which convert DC Voltage in to Three Phase AC\r\nVoltage by using semiconductor switches.In this project six semi-conductor switches\r\nare used to produce six step AC voltage. To switch ON and OFF the semi-conductor\r\nswitch gate pulses are required. To generate gate pulse in our project we have used\r\nthe Arduino UNO board.', 'For implementation of closed loop logic, we have made a circuit using relay which\r\nwill provide DC supply to the inverter.In normal working condition the load will get\r\ndirectly AC supply. But during fault the supply is passed to the load using inverter.\r\nLogic is designed in such a way that the switch over time is few milliseconds.', 'For one cycle of 360\r\n0\r\neach step would be of 60\r\n0\r\ninterval for a six step inverter. It\r\nwould be gated at regular intervals of 60\r\n0\r\nin proper sequence so that Three Phase AC\r\nVoltage is synthesized at the output terminals of a six step inverter.', 'Output gate pulse from arduino is not sucient to ON the switch. So it requires\r\nthe Driver Circuit to trigger. There are mainly two modes of operation of inverter\r\n180\r\n0\r\nand 120\r\n0\r\nconduction mode, 120\r\n0\r\nmode is quiet simple compare to 180\r\nmode of\r\noperation.', 'For one cycle of 360\r\neach step would be of 60\r\ninterval for a six step inverter. It\r\nwould be gated at regular intervals of 60\r\n0\r\nin proper sequence so that Three Phase AC\r\nVoltage is synthesized at the output terminals of a six step inverter.', 'For one cycle of 360\r\neach step would be of 60\r\ninterval for a six step inverter. It\r\nwould be gated at regular intervals of 60\r\n0\r\nin proper sequence so that Three Phase AC\r\nVoltage is synthesized at the output terminals of a six step inverter.', 'Driver Output.jpg', 'www.youtube.com/123454tdc', 'Recruitment_for_various_post.pdf', '0', 2018, '0'),
+(46, 54, 'ME46', 'QUICK ROAD CLEANING MACHINE', 'Prototype', 1, 1, 'L J POLYTECHNIC', 'Gujarat', 'Ahmedabad', '4', 'Mr. RAVI PATEL, Mr. MITESH PATEL, Mr. ANKIT PATEL, Mr. SMIT PATEL', '', '', 'Mr. ANKIT MOTKA', 'ankit.motka@gmail.com', 8905912340, 'Mr. xyz xyz', 'ankit.motka@gmail.com', 8905912340, 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'Quick Road Cleaner Machine is very helpful to road cleaners. It has 4 no. of wheels, 2 shafts, Pair of gear, Rotary brush, 1 Roller brush, Bucket, Curve shaped sheet, Body and Handle etc. these are main parts of it. It requires only force to forward direction to move the machine. When wheels are rotate than gears which are mounted on shaft connected to any two wheels are rotate. Rotary brush is mounted on gear is rotate so dust particles going to sheet than other roller brush is place on another', 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'This project for less time consumption in road cleaning as compared to traditional and conventional road cleaning process. Road cleans more speedy than traditional conventional road cleaning process. ', 'Quick.JPG', '', 'PROJect main chp.pdf', '0', 2018, '0'),
+(47, 74, 'EC47', 'Model to Navigation System ', 'Product', 2, 5, 'L J POLYTECHNIC', 'Gujarat', 'Ahmedabad', '1', 'Mr. NIRAV RAJAN', '', '', 'Dr. NIRAV RAJAN', 'nirav_rajan24@yahoo.com', 9898842082, 'Dr. NIRAV RAJAN', 'nirav_rajan24@yahoo.com', 9898842082, 'Its new innovation', 'The world of wireless communication has exploded in the last few years, making its way\r\nto the common man but becoming a genuine challenge for the designers. Let us discuss\r\nsome new components and technologies that are now available for designing safe and\r\nsecure communication devices  ', 'Its Unique then the existing Navigation system.', 'Existing Navigation System is just limited to the outer area of the any public area. But this system is used in the inner are and zone of the any of searched area.', 'Its very easy to use the system because its not need any other hardware to implements. Its required only mobile with internet.', 'Excellent', 'Excelent', 'Untitled.jpg', '', 'EFY_Oct14.pdf', '0', 2018, '0'),
+(48, 70, 'ME48', 'EUTECTIC FREEZER', 'Product', 1, 1, 'LJ POLYTECHNIC', 'Gujarat', 'Ahmedabad', '1', 'Mr. NAOMAN SHAIKH', '', '', 'Mr. RAVI RAJPUT', 'ravirajput230991@gmail.com', 9913049784, '  ', '', 0, 'Only one or two run cycles per day so less start up losses.\r\nOperating in a very efficient COP* range mostly approx 2.0. This being a 50% more efficient COP factor than a cyclic system means shorter run time per cycle and far more efficient conversion of energy.\r\nFull fail safe automatic resetting. Manual over-ride switch to bypass all control system if needed.', 'Having large latent heat of fusion phase change materials are widely being used in thermal\r\nindustries like food industry, process industry and transportation. Eutectic system is used in\r\nrefrigeration system which absorbs and liberates heat at constant imparted temperature. Eutectic is mixture of two or compounds in proportion having\r\nfreezing point less than that of the individual compound. The installation of eutectic plates is done in\r\nfood storage containers of vans or can be used as a back', 'The first and most obvious advantage the eutectic system has is its far greater mass and therefore thermal hold-over storage capacity. A eutectic system will run for a long period while refrigerating the eutectic solution until frozen solid. It then stays off for relatively much longer periods while this thermal mass thaws completely before running again. All the time maintaining cabinet temperature.', 'Reduction in work consumption, Increase in holding time temperature without electricity', 'The eutectic system has is its far greater mass and therefore thermal hold-over storage capacity.\r\nAn eutectic system will run for a long period while refrigerating the eutectic solution until frozen solid. \r\nIt then stays off for relatively much longer periods while this thermal mass thaws completely before running again.', 'Long â€˜hold-overâ€™ off periods due to the large thermal mass and more importantly because of the eutecticâ€™s phase change.\r\nRefrigeration can be at a time that suits the power supply, or during cooler periods when refrigeration systems are more efficient.\r\nMuch lower overall power consumption due to more efficient refrigerant evaporation in a saturated environment,\r\nWith ECO2 the eutectic mass is automatically refrozen whenever sources of power are abundant, reducing demand on batteries.\r\nVir', 'If the eutectic solution doesnâ€™t freeze on each run cycle and then thaw completely during off periods, then the system can not operate correctly.', 'CaptureEF.JPG', '', 'PROJECT.pdf', '0', 2018, '0'),
+(49, 76, 'EC49', 'SMART HOME AUTOMATION BASED ON IoT USING ARDUINO MEGA', 'Start Up', 1, 5, 'LJPOLYTECHNIC', 'Gujarat', 'Ahmedabad', '1', 'Ms. zahira lakhani', '', '', 'Ms. ZEEL PATEL', 'zeelpatel@gmail.com', 9925169421, 'Ms. divya parmar', 'divyaparmar2094@gmail.com', 7405845405, 'Appropriate checkbox is selected from the\r\n192.168.0.254/led# and Figure 5.4 shows the\r\nscreenshots of led2, led3 and led5 checked in the\r\nwebpage and the corresponding hardware device\r\ngets turn on/off according to the checked boxes as\r\nin the webpage. Figure 6 shows the associated\r\noutput for the boxes checked in in Figure 5  ', 'â€”In the advancement of technologies\r\ncontrolling and monitoring electrical appliances\r\nusing laptop, computer with the help of internet\r\nconnection is possible. So it gives a more space at\r\na home, university and industrial controlling\r\nelectrical appliances anywhere in the world. By\r\nusing Internet of Things we can control many\r\ndevices such as light, power plug, Fan, computer,\r\nsecurity system and etc.It reduces human efforts\r\nand power efficiency. The main objective of\r\ninternet of things i', 'The Internet of Things (IoT) is the network of\r\nphysical objects devices, vehicles, buildings and\r\nother items embedded with\r\nelectronicssoftwaresensors, and network\r\nconnectivity that enables these objects to collect\r\nand exchange data', 'The IoT allows objects to be sensed and\r\ncontrolled remotely across existing network\r\ninfrastructure, creating opportunities for more\r\ndirect integration of the physical world into\r\ncomputer-based systems, ', 'This paper described the various components\r\nand technologies used in a prototype system to\r\nmonitor and control home appliances and devices\r\nremotely using a mobile phone. This project is\r\nintended to bring us a step closer toward a smart\r\nhome where all appliances and devices are\r\nefficiently controlled and monitored remotely. It\r\nintegrates a number of technologies to build the\r\ncomplete hardware and software system. There\r\nare a number of possible extensions to this work\r\nsuch as: support mu', 'where all appliances and devices are\r\nefficiently controlled and monitored remotely. It\r\nintegrates a number of technologies to build the\r\ncomplete hardware and software system. There\r\nare a number of possible extensions to this work\r\nsuch as: support multimedia devices and services\r\nthrough MMS (Multimedia Message Service);\r\nextend wireless coverage within the home through\r\na mix of Bluetooth and WiFi technologies. Many\r\nof the issues are being incorporated in the\r\nprototype system', 'The interconnected system consists of Arduino\r\nmicrocontroller connected with aethernet shield\r\nwhich is also connected to a modem with internet\r\nconnection and it is shown in figure 3.\r\n', 'bbd.jpg', '', '2016-08-23-15-08-31-127_1471945111127_XXXPP7569X_A', '0', 2018, '0'),
+(50, 78, 'EE50', 'BLUETOOTH BASED HOME AUTOMATION USING ARDUINO ', 'Start Up', 1, 4, 'LJPOLYTECHNIC', 'Gujarat', 'Ahmedabad', '1', 'Ms. zeel patel', '', '', 'Ms. zahira lakhani', 'divyaparmar2094@gmail.com', 7405845405, 'Ms. divya parmar', 'divyaparmar2094@gmail.com', 7405845405, 'Control home electrical system using smart phone with\r\nandroid application and Blue Switch Module.', 'It has 14 digital input/output pins (of which 6\r\ncan be used as PWM outputs), 6 analog inputs,\r\na 16 MHz quartz crystal, a USB connection, a\r\npower jack, an ICSP header and a reset button.\r\n', 'Android is built on the open Linux Kernel.\r\nFurthermore, it utilizes a custom JAVA virtual\r\nmachine that was designed to optimize\r\nmemory and hardware resources in a mobile\r\nenvironment.', 'The Internet of Things (IoT) is the network of\r\nphysical objects devices, vehicles, buildings and\r\nother items embedded with\r\nelectronicssoftwaresensors, and network\r\nconnectivity that enables these objects to collect\r\nand exchange data.', 'The Android platform includes support for the\r\nBluetooth network stack, which allows a\r\ndevice to wirelessly exchange data with other\r\nBluetooth devices.', 'The Android platform includes support for the\r\nBluetooth network stack, which allows a\r\ndevice to wirelessly exchange data with other\r\nBluetooth devices.', 'Control home electrical system using smart phone with\r\nandroid application and Blue Switch Module.', 'Untitled-1.jpg', '', 'Adv. with terms & conditions -2016 VS (JA).pdf', '0', 2018, '0'),
+(51, 77, 'EE51', 'ELECTROMAGNET TRAIN', 'Proof of Concept', 2, 4, 'L J POLYTECHNIC', 'Gujarat', 'Ahmedabad', '1', 'Mr. BHARGAV TRIVEDI', '', '', 'Mr. BHARGAV TRIVEDI', 'bhargavtrivedi1311@gmail.com', 9723617957, 'Mr. BHARGAV TRIVEDI', 'bhargavtrivedi1311@gmail.com', 9723617957, 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'The train propels forward without any friction from moving mechanical parts. It has many advantages with minor drawbacks. The basis of maglev trains mechanisms are magnetic levitation. ... The maglev propulsion systems uses the interaction of stators, superconductors and magnets between the railway and the train.', 'images.jpg', '', '6910381-maglev.pdf', '0', 2018, '0');
+INSERT INTO `project_master` (`project_id`, `student_id`, `group_id`, `project_title`, `project_category`, `project_stream`, `project_branch`, `institute_name`, `institute_state`, `institute_city`, `team_size`, `team_member_names`, `project_teammebers_email`, `project_teammmebers_contact`, `guide_name`, `guide_email`, `guide_contact`, `co_guide_name`, `co_guide_email`, `co_guide_contact`, `background_of_inventor`, `project_abstract`, `project_uniqueness`, `project_problem_definition`, `project_market_potential`, `project_potential_impact`, `porject_scope_resource_requirement`, `project_image`, `project_video`, `project_report_file`, `project_selected`, `project_year`, `project_closed_flag`) VALUES
+(52, 68, 'ME52', 'Rod Bending Machine', 'Prototype', 1, 1, 'L J Polytechnic', 'Gujarat', 'Ahmedabad', '4', 'Mr. Yash Sagar, Mr. Parth Solanki, Mr. sunil Soni, Mr. ankit Vyas', '', '', 'Mr. SUNIL PATEL', 'sunilkumar.patel@ljinstitutes.edu.in', 7383088304, 'Mr. xyz xyz', 'sunilkumar.patel@ljinstitutes.edu.in', 7383088304, 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'The main purpose of product is to explain the design and mechanism of manually rod bending machine. It works on hydraulic with manual operating system. It reduces human effort  and  also  required  low  skilled  worker  to  operate  this  machine.  It  is  a  time consuming process. We were making manually rod bending machine with the use of hydraulic piston cylinder assembly capacity of 50 tone, square channel, MS plate etc. We were making multiple rod bending machine. We were used a hand pump ', 'rod bending mc.JPG', '', 'Rod bending machine.pdf', '0', 2018, '0'),
+(53, 82, 'ME53', 'abc', 'Proof of Concept', 4, 1, 'lj', 'Gujarat', 'Ahmedabad', '1', 'Mr. abc abc', '', '', 'Ms. abc abc', 'abc@gmail.com', 1234567891, '  ', '', 0, '-', '-', '-', '-', '-', '-', '-', 'Sunset.jpg', '', 'ENUtxt.pdf', '0', 2018, '0'),
+(54, 56, 'ME54', 'SEED SOWING MACHINE', 'Prototype', 1, 1, 'LJ POLYTECHNIC', 'Gujarat', 'Ahmedabad', '4', 'Mr. MEHUL Madhgundi, Mr. DHRUPAD BODIWALA, Mr. LOKESH IYER, Mr. DELZAD CHECKER', '', '', 'Mr. PARTH GANDHI', 'parth.gandhi@ljinstitutes.edu.in', 7878573442, 'Mr. xyz xyz', 'xyz@gmail.com', 7878579665, 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'India is an agricultural country and hence majority of people are employed in agriculture activity directly or indirectly for making a living .Although India is an agricultural country primitive methods are used for agriculture which consumes more time, efforts and are less efficient. To overcome this problem we came up with the new technology named as seed sowing machine. This technology is manually operated and thus does not consume or required any kind of power source hence it is economical. ', 'seed.jpg', '', 'PART0 2.pdf', '0', 2018, '0'),
+(55, 81, 'ME55', 'BATTERY OPERATED SCOOTER FOR HANDICAPPED PEOPLE', 'Prototype', 1, 1, 'LJP', 'Gujarat', 'Ahmedabad', '1', 'Mr. ayan shekh', '', '', 'Mr. DHAVAL SHAH', 'dhavalpshah@ljinstitutes.edu.in', 9998277589, 'Mr. xyz xyz', 'xyz@gmail.com', 9016708369, 'useful for handicapped people.', 'Disabled people and other elderly people always want to face their daily life just\r\nlike normal people but it is always a great challenge for them to move from one\r\nplace to another.  They are always dependent on others and need to be assisted\r\nto move back and forth which is not always possible to assist them all the time. \r\n\r\nFor the benefits of such handicapped & elderly people an affordable\r\nBattery Operated Scooter was designed and fabricated in this study. For the\r\npurpose of this research', 'useful for handicapped people.', 'useful for handicapped people.', 'useful for handicapped people.', 'useful for handicapped people.', 'useful for handicapped people.', 'DHAVAL P SHAH_opt.jpg', '', 'Tittle 10th - File 3.pdf', '0', 2018, '0'),
+(56, 85, '56', 'TEST  HJHJHJHJHJHKJ HJHJHJHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH ', 'Proof of Concept', 1, 16, 'LJICA', 'Gujarat', 'Ahmedabad', '2', 'Mr. Anh Shah, Mr. Kirtan Gajjar', '', '', 'Mr. Jignesh Doshi', 'doshijig@gmail.com', 9428350480, 'Mr. Dipt Kothar', 'd@gmail.com', 9826350480, 'Test', 'Testhhhhhhhhhhhhhhhhh', 'Test', 'Test', 'TEst', 'Test', 'Test', 'financial.jpeg', 'https://www.w3schools.com/tags/', '0.jpg', '0', 2018, '0'),
+(57, 83, 'CE57', 'School attendance system', 'Proof of Concept', 1, 9, 'L J Polytechnic', 'Gujarat', 'Ahmedabad', '3', 'Mr. Nilesh Thakkar, Mr. Rahul Pancholi, Mr. Ankit Limkar', '', '', 'Mr. Rahul Pancholi', 'nilesh.thakkar@ljinstitutes.edu.in', 7777975136, '  ', '', 0, ' -', 'School management system is very useful for the faculty members for maintaining the attendance records of the students.', 'We can make  thee attendance based on the labwise and lecture wise , many useful reports like attendance by date or attendance by subject for whole semester etc.', 'Making the attendance system paper free and making the reports in less effort by means of single click only.', 'As all the school and colleges are facing problems to maintain the record of attendance in physical manner, this will solve the problem.', 'Both the faculties and students can rely on the system.', 'It is definitely a project that can be a product.', 'GTU logo.jpg', '', 'School Attendance system.pdf', '0', 2018, '0'),
+(58, 86, 'ME58', 'mechanical project', 'Prototype', 1, 1, 'ljp', 'Gujarat', 'Ahmedabad', '2', 'Mr. xxx x zzzzzzzzzzzzzzzzz, Mr. aaaaaa vvvvvvvvvvvv', '', '', 'Mr. bbbb vvvvvvvvvvvvvvvv', 'bbb@gmail.com', 9745678909, '  ', '', 0, 'fghmghmk gkyhujk', 'wwww fhfgtjnfg', 'fjgyj gkuyhkl', 'ghkhu ghkuh', 'fgjgfyj yuluy', 'fjyk gkuy', 'jtyk gjktyk', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(59, 84, 'IC59', 'My Project For Interactive Tutorials', 'Product', 3, 6, 'l J Polytechnic', 'Gujarat', 'Ahmedabad', '1', 'Mr. Ram Dashrath', '', '', 'Mr. Ashutosh Ssss', 'ashutosh.sadaria@gmail.com', 9427571541, 'Mr. Abs sad', 'ashutosh.sadaria@gmail.com', 9427571541, 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial m', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial m', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial m', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial m', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. ', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. ', 'This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. This is my project for interactive tutorial making using portal. ', 'Manchester United_4.jpg', 'http://google.com', 'Sample.pdf', '0', 2018, '0'),
+(60, 88, 'AE60', 'adfg', 'Prototype', 1, 3, 'ljp', 'Gujarat', 'Ahmedabad', '1', 'Mr. hhhh dddd', '', '', 'Mr. gggg rrrrr', 'kkk@gmail.com', 7856789034, '  ', '', 0, 'fhfghgn', 'hfgh', 'fhgfh', 'htrjt', 'ghgfh', 'fghfgj', 'fgjgfj', '0 (1).jpg', '', '104.pdf', '0', 2018, '0'),
+(61, 89, 'ME61', 'gvfdgb ', 'Prototype', 1, 1, 'LJMCA', 'Goa', 'Mapusa', '1', 'Mr. gggg dsfdsf', '', '', 'Mr. hhh jjj', 'ddd@gmail.com', 9725167079, '  ', '', 0, 'Mention potential impac', 'dfbd ', 'drfhdfhb', ' dghdrh', 'dgrte ', 'Mention potential impac', 'Mention potential impac', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(62, 92, 'ME62', 'TEST', 'Proof of Concept', 1, 1, 'LJ ICA', 'Gujarat', 'Ahmedabad', '1', 'Ms. Pinkal Patel', '', '', 'Mr. Bhushan Trivedi', 'bh@gmail.com', 8866554433, '', '', 0, 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'financial.jpeg', '', '881711252524510.pdf', '0', 2018, '0'),
+(63, 94, 'ME63', 'ABSTRACT OF THE PROJECT', 'Prototype', 1, 1, 'ljp', 'Gujarat', 'Ahmedabad', '2', 'Mr. ABCD WXYZ, Mr. zzzzz aaaaa', '', '', 'Mr. jkl fffff', 'jkl@gmail.com', 7873196432, '  ', '', 0, 'Abstract of the project', 'Abstract of the project', 'Abstract of the project', 'Abstract of the project', 'Abstract of the project', 'Abstract of the project', 'Abstract of the project', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(64, 95, 'MAE64', 'ELECTRONIC PRODUCT', 'Prototype', 1, 2, 'ljpoly', 'Gujarat', 'Anand', '2', 'Mr. abcde lmn, Mr. kkkkk yyyyyy', '', '', 'Mr. qqqqqqq rrrrrrr', 'qqqq@gmail.com', 9725676789, '  jjjj', 'jjjj@gmail.com', 9876543275, 'Background of innovation', 'Abstract of the project', 'Uniqueness', 'What exact problem', 'Market potential', 'Mention potential ', 'Scope , Design and Resource ', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(65, 96, 'ME65', 'TESTING', 'Proof of Concept', 2, 1, 'IIT Delhi', 'Delhi', 'New Delhi*', '1', 'Mr. Sagar Panchal', '', '', 'Mr. NIL NIL', 'gmail@gmail.com', 9099443884, '  ', '', 0, 'Testing', 'Testing', 'Testing', 'Testing', 'Testing', 'Testing', 'Testing', '0 (1).jpg', '', '104.pdf', '0', 2018, '0'),
+(68, 97, 'MCA68', 'LJ FACULTY APPRAISAL', 'Proof of Concept', 3, 12, 'Lj Mca', 'Gujarat', 'Ahmedabad', '3', 'Mr. Abhinav Shah, Mr. Het Kansara, Dr. Kirtan Gajjar', '', '', 'Mr. Alok Manke', 'aloksir@gmail.com', 9999999999, 'Mr Jignesh Doshi', 'jdsir@gmail.com', 7777777777, 'Lj Faculty Appraisal', 'Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal Lj Faculty Appraisal v v Lj Faculty Appraisal', 'Lj Faculty Appraisal', 'Lj Faculty Appraisal', 'Lj Faculty Appraisal', 'Lj Faculty Appraisal', 'Lj Faculty Appraisal', 'Signature.jpg', '', 'AS_Resume_09-08-2017.pdf', '0', 2018, '0'),
+(69, 98, 'EE69', 'ROBO SERVANT', 'Proof of Concept', 1, 4, 'LJ ICA', 'Gujarat', 'Ahmedabad', '5', 'Ms. Bhavya Shah,Ms Bharti,Ms Dhwani,Mr Dhyey,Mr Jay', '', '', '', '', 0, '', '', 0, 'ijijijiji', 'Sojijiij', 'ojijiji', 'ijijijiji', 'jijijijij', 'ijij', 'jiijiji', 'financial.jpeg', '', '881711252524510.pdf', '0', 2018, '0'),
+(70, 100, 'ME70', 'MANUFACTURING ENGINEERING', 'Prototype', 1, 1, 'ljp', 'Gujarat', 'Bhuj', '2', 'Mr. Ajay Gupta, Mr. Kkkkkkk Yyyyyyy', '', '', '', '', 0, '', '', 0, 'Background of innovation', 'Abstract of the project', 'Uniqueness/Novelty of your project', 'What exact problem your innovatio', 'Market potential and competitiv', 'Mention potential impact of y', 'Scope , Design and Resource requirement to make your project to a product/solution ( max 100 words)*\r\n', 'KnowledgeTek ISO.jpg', '', 'LAB MANUAL-AM.pdf', '0', 2018, '0'),
+(71, 102, '71', 'PERUSAL ', 'Prototype', 3, 16, 'LJ IMS', 'Gujarat', 'Ahmedabad', '2', 'Dr. Jignesh Doshi, Dr. Alok MAnke', '', '', '', '', 0, '', '', 0, 'background', 'Result analysis tool', 'Result ', 'analysis', 'tools', 'uniq type of project', 'scope', 'financial.jpeg', '', '', '0', 2018, '0'),
+(72, 103, 'ID72', 'ASAA', 'Proof of Concept', 2, 15, 'LJICA', 'Gujarat', 'Ahmedabad', '1', 'Mr. J D', '', '', 'Mr. Jignesh Doshi', 'dh@gmail.com', 9324567820, '', '', 0, 'aaaa', 'aaa', 'aaaa', 'aaaaa', 'aaas', 'asa', 'aaa', 'financial.jpeg', '', '', '0', 2018, '0'),
+(73, 103, '1', 'ASAA', 'Proof of Concept', 2, 15, 'LJICA', 'Gujarat', 'Ahmedabad', '1', 'Mr. J D', '', '', 'Mr. Jignesh Doshi', 'dh@gmail.com', 9324567820, '', '', 0, 'aaaa', 'aaa', 'aaaa', 'aaaaa', 'aaas', 'asa', 'aaa', 'financial.jpeg', '', '', '0', 2018, '0'),
+(74, 105, 'ME74', 'TEST', 'Proof of Concept', 1, 1, 'LJICA', 'Gujarat', 'Ahmedabad', '3', 'Mr. Mkk Parmar, Mr. FDD Ddd, Mr. JDD JDj', '', '', '', '', 0, '', '', 0, 'tttttt', 'Test', 'Test', 'Test', 'Tssst', 'tttt', 'ttttt', 'image1.jpg', '', '', '0', 2018, '0'),
+(75, 105, '1', 'TEST', 'Proof of Concept', 1, 1, 'LJICA', 'Gujarat', 'Ahmedabad', '3', 'Mr. Mkk Parmar, Mr. FDD Ddd, Mr. JDD JDj', '', '', '', '', 0, '', '', 0, 'tttttt', 'Test', 'Test', 'Test', 'Tssst', 'tttt', 'ttttt', 'image1.jpg', '', '', '0', 2018, '0'),
+(76, 106, 'MAE76', 'TASK MGMT', 'Prototype', 1, 2, 'LJIET', 'Gujarat', 'Ahmedabad', '1', 'Ms. Charmi Doshi', '', '', '', '', 0, '', '', 0, 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', '071116_checklist.JPG', '', '', '0', 2018, '0'),
+(77, 106, '1', 'TASK MGMT', 'Prototype', 1, 2, 'LJIET', 'Gujarat', 'Ahmedabad', '1', 'Ms. Charmi Doshi', '', '', '', '', 0, '', '', 0, 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', 'Any of the corporate field needs the task management to manage the working of the employees and Task.  The main need of the corporate field is to manage their working and data management in a single system. Currently 11 System neither manages all the scopes needed for any corporate to increase the efficiency within the users and for the corporate also.â€œWorkHubâ€ is a System for Task Management. This system manages the task, project and company phonebook. Meetings and Interviews will be able t', '071116_checklist.JPG', '', '', '0', 2018, '0'),
+(82, 107, 'ME82', 'PERPECTUAL TURBINE', 'Prototype', 1, 1, 'LJIET', 'Gujarat', 'Ahmedabad', '1', 'Mr. Divyank Dvij', '', '', 'Mr. sssssss ssssssss', 'd@gmail.com', 6566545612, '', '', 0, 'x', 'x', 'x', 'x', 'x', 'x', 'x', '071116_checklist.JPG', '', '', '0', 2018, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stream_master`
+--
+
+CREATE TABLE IF NOT EXISTS `stream_master` (
+  `stream_id` int(11) NOT NULL AUTO_INCREMENT,
+  `stream_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`stream_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `stream_master`
+--
+
+INSERT INTO `stream_master` (`stream_id`, `stream_name`) VALUES
+(1, 'Diploma Engineering'),
+(2, 'Degree Engineering  (UG/PG)'),
+(3, 'Master of Computer Applications'),
+(4, 'Pharmacy  (UG/PG)'),
+(5, 'Applied Sciences  (UG/PG)'),
+(6, 'Architecture  (UG/PG)'),
+(7, 'Others'),
+(15, 'Diploma in Vocational');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_master`
+--
+
+CREATE TABLE IF NOT EXISTS `student_master` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `middle_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `gender` enum('Male','Female') DEFAULT NULL,
+  `photo` varchar(70) NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=114 ;
+
+--
+-- Dumping data for table `student_master`
+--
+
+INSERT INTO `student_master` (`student_id`, `user_id`, `first_name`, `middle_name`, `last_name`, `gender`, `photo`) VALUES
+(50, 87, 'NISARG', 'B', 'THAKKER', 'Male', 'nisarg (1).jpg'),
+(49, 86, 'Dipak', '', 'Ranpura', 'Male', 'dipak photo.JPG'),
+(48, 85, 'shweta', 'yash', 'yagnik', 'Male', 'website.jpg'),
+(47, 84, 'Nilay', '', 'Parekh', 'Male', 'KnowledgeTek ISO.jpg'),
+(46, 83, 'dhruvin', 'j', 'prajapati', 'Male', 'Word Art (1).jpeg'),
+(45, 82, 'AMI', 'ASHOKBHAI', 'PATEL', 'Male', 'Winter.jpg'),
+(44, 81, 'hardikbhai', 'kishorbhai', 'kyada', 'Male', 'Water lilies.jpg'),
+(43, 80, 'Shefa', 'Dipakkumar', 'Shah', 'Male', 'Blue hills.jpg'),
+(42, 79, 'Jinal', 'Kiritbhai', 'Shah', 'Male', 'Sunset.jpg'),
+(41, 78, 'abc', 'def', 'acharya', 'Male', 'anu_photo.jpg'),
+(40, 77, 'VIPULKUMAR', 'DHAIRYA', 'SHAH', 'Male', 'Water lilies.jpg'),
+(39, 76, 'DHRUVIL', 'J', 'MODI', 'Male', 'Water lilies.jpg'),
+(38, 75, 'Shardul', 'Sureshchandra', 'Gurjar', 'Male', 'Winter.jpg'),
+(37, 74, 'Nairuti', 'shishir', 'shah', 'Male', 'Blue hills.jpg'),
+(36, 73, 'abc', 'def', 'acharya', 'Male', 'anu_photo.jpg'),
+(35, 72, 'KUSH', 'PARTHIV', 'RAO', 'Male', 'Blue hills.jpg'),
+(34, 71, 'dhruvin', 'j', 'prajapati', 'Male', 'Word Art (1).jpeg'),
+(26, 63, 'aaaaa', '', 'rrrr', 'Male', 'KnowledgeTek ISO.jpg'),
+(27, 64, 'raumilkumar', '', 'maniar', 'Male', 'KnowledgeTek ISO.jpg'),
+(28, 65, 'dhruvin', 'j', 'prajpapti', 'Male', 'Word Art (1).jpeg'),
+(29, 66, 'Jignesh', 'C', 'Doshi', 'Male', 'selection.jpg'),
+(30, 67, 'xyz', '', 'pqr', 'Male', 'image.jpg'),
+(31, 68, 'lmn', '', 'abc', 'Male', 'LJ Innovation Village-Scrolling images2.jpg'),
+(32, 69, 'lmn', '', 'abc', 'Male', 'image.jpg'),
+(33, 70, 'rahul', 'b', 'pancholi', 'Male', 'image.jpg'),
+(51, 88, 'Kunal', '', 'Shah', 'Male', 'images.jpg'),
+(52, 89, 'Jignesh', '', 'Chhatbar', 'Male', 'Copy of IMG_20150421_121142.JPG'),
+(53, 90, 'soyeb', '', 'mansuri', 'Male', 'images.jpg'),
+(54, 91, 'Motka', 'Ankit', 'Darjibhai', 'Male', 'ANKIT PIC 15KB.jpg'),
+(55, 92, 'payal', '', 'patel', 'Male', 'index.jpg'),
+(56, 93, 'PARTH', '', 'GANDHI', 'Male', '_DSC8239.JPG'),
+(57, 94, 'Alpesh', 'Bhagavanbhai', 'Patel', 'Male', 'img373.jpg'),
+(58, 95, 'harsh', '', 'rasrpal', 'Male', 'images.jpg'),
+(59, 96, 'keval', 'Vinodbhai', 'Barsopiya', 'Male', 'KEVAL.jpg'),
+(60, 97, 'Shoaib', 'Ahmedbhai', 'Memon', 'Male', 'SHOAIB.jpg'),
+(61, 98, 'Jigar', 'P', 'Kalotra', 'Male', '2 (1).jpg'),
+(62, 99, 'mahesh', '', 'kella', 'Male', '0.jpg'),
+(63, 100, 'RIPALKUMAR', 'HEMANTBHAI', 'GOLE', 'Male', 'photo-13.8kb.jpg'),
+(64, 101, 'YAGNESH', 'VIJAY', 'ANAVADIYA', 'Male', 'YAGNESH.jpg'),
+(65, 102, 'Kachhadiya', 'Amitkumar', 'Maganbhai', 'Male', 'amk.jpg'),
+(66, 103, 'Nirrutin', '', 'Patadia', 'Male', 'images.jpg'),
+(67, 104, 'RUCHIK', 'DINESHBHAI', 'RAVAL', 'Male', 'psu2.jpg'),
+(68, 105, 'SUNIL', 'BHARATBHAI', 'PATEL', 'Male', 'sunil 15 kb.jpg'),
+(69, 106, 'Alpesh', 'J', 'Thesiya', 'Male', 'Untitled.jpg'),
+(70, 107, 'Ravi', 'R', 'Rajput', 'Male', 'P70706-081218(1).jpg'),
+(71, 108, 'MITESHKUMAR', 'RAMESHBHAI', 'PATEL', 'Male', 'Mitesh.jpg'),
+(72, 109, 'PARMAR', 'DIVYA', 'LALABHAI', 'Male', 'Untitled-1.jpg'),
+(73, 110, 'Shweta', '', 'Gohel', 'Male', 'index.jpg'),
+(74, 111, 'NIRAV', 'N', 'RAJAN', 'Male', 'Untitled.jpg'),
+(75, 112, 'Vivek', 'Rajendra', 'Dhagia', 'Male', '7thsem.jpg'),
+(76, 113, 'LAKHANI', 'ZAHIRA', 'ANWARALI', 'Male', 'Untitled-1.jpg'),
+(77, 114, 'BHARGAV', 'S', 'TRIVEDI', 'Male', 'india-entertainment-bollywood_7286a8e0-86c8-11e6-92b8-e7f1e026a3c4.jpg'),
+(78, 115, 'patel', 'zeel', 'kantilal', 'Male', 'bbd (1).jpg'),
+(79, 116, 'PRATIKKUMAR', 'RAMESHBHAI', 'PATEL', 'Male', 'photo.JPG'),
+(80, 117, 'SACHIN', 'V', 'PATEL', 'Male', 'sacphoto.jpg'),
+(81, 118, 'DHAVAL', 'PARESHBHAI', 'SHAH', 'Male', 'DHAVAL P SHAH_opt.jpg'),
+(82, 119, 'abc', 'abc', 'abc', 'Male', 'Winter.jpg'),
+(83, 120, 'Nilesh', 'Mansukhbhai', 'Thakkar', 'Male', 'GTU logo.jpg'),
+(84, 121, 'Ash', 'B', 'Sadaria', 'Male', 'Manchester United_4.jpg'),
+(85, 122, 'Abhinav', '', 'Shah', 'Male', 'financial.jpeg'),
+(86, 123, 'hitesh', '', 'suthar', 'Male', 'KnowledgeTek ISO.jpg'),
+(87, 124, 'Virat', '', 'Kohli', 'Male', '0.jpg'),
+(88, 125, 'mkk', '', 'kella', 'Male', '0.jpg'),
+(89, 126, 'kumar', '', 'aaaa', 'Male', 'KnowledgeTek ISO.jpg'),
+(90, 127, 'nirav', '', 'mehta', 'Male', 'IMG-20171009-WA0001.jpg'),
+(91, 128, 'MOSAM', '', 'PANDYA', 'Male', 'MOSAM PANDYA_JPG.jpg'),
+(92, 129, 'Pinkal', '', 'Patel', 'Male', 'financial.jpeg'),
+(93, 130, 'Komal', '', 'Patel', 'Male', 'financial.jpeg'),
+(94, 131, 'ABCD', '', 'WXYZ', 'Male', 'KnowledgeTek ISO.jpg'),
+(95, 132, 'abcde', '', 'lmn', 'Male', 'KnowledgeTek ISO.jpg'),
+(96, 133, 'Sagar', '', 'Panchal', 'Male', '0 (1).jpg'),
+(97, 134, 'Abhinav', 'Kirankumar', 'Shah', 'Male', 'Photo.jpg'),
+(98, 135, 'Bhavya', 'Atit', 'Shah', 'Male', 'financial.jpeg'),
+(99, 136, 'Alok', '', 'Manke', 'Male', '06172017121943.jpg'),
+(100, 137, 'Ajay', '', 'Gupta', 'Male', 'KnowledgeTek ISO.jpg'),
+(101, 138, 'Aajay', '', 'Gupta', 'Male', 'KnowledgeTek ISO.jpg'),
+(102, 139, 'Jignesh', 'C', 'Doshi', 'Male', 'financial.jpeg'),
+(103, 140, 'Jignesh', 'C', 'Doshi', 'Male', 'financial.jpeg'),
+(104, 147, 'Abc', 'B', 'Raja', 'Male', 'financial.jpeg'),
+(105, 148, 'Mkk', '', 'Parmar', 'Male', 'cropped-information-technology-page.jpg'),
+(106, 149, 'Charmi', '', 'Doshi', 'Male', 'financial.jpeg'),
+(107, 150, 'Divyank', '', 'Dvij', 'Male', '071116_checklist.JPG'),
+(108, 151, 'Rizwan', '', 'Mohd', 'Male', '071116_checklist.JPG'),
+(109, 157, 'Bodhisattwa', '', 'Sanghapriya', 'Male', 'LJIV.jpg'),
+(110, 158, 'Sachin', 'R', 'Tendulkar', 'Male', 'logo - Copy.jpg'),
+(111, 159, 'Jignesh', 'C', 'Doshi', 'Male', 'abstract-background-design_1297-73.jpg'),
+(112, 160, 'Het', '', 'Kansara', 'Male', 'abstract-background-design_1297-73.jpg'),
+(113, 161, 'Palash', 'P', 'Patel', 'Male', 'abstract-background-design_1297-73.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_master`
+--
+
+CREATE TABLE IF NOT EXISTS `user_master` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `contact` bigint(20) NOT NULL,
+  `passwd` varchar(50) NOT NULL,
+  `user_type` enum('Admin','Student','Mentor') DEFAULT NULL,
+  `user_status` enum('1','0') DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `contact` (`contact`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=191 ;
+
+--
+-- Dumping data for table `user_master`
+--
+
+INSERT INTO `user_master` (`user_id`, `email`, `contact`, `passwd`, `user_type`, `user_status`, `created_at`) VALUES
+(1, 'admin@gmail.com', 1111111111, '1bbd886460827015e5d605ed44252251', 'Admin', '1', '2017-12-06 01:56:55'),
+(10, 'nikunj@dataone.io', 9016211300, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(9, 'pritesh.bhatia@outlook.com', 9925833113, '3f25d0920f21aa7513c97bc3319b19fc', 'Mentor', '1', '2017-12-06 01:56:55'),
+(8, 'mahanta.chinmay@gmail.com', 9662325558, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(7, 'shahnikhil@yahoo.com', 9998822287, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(6, 'archit@strawberrygroup.com', 7405828599, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(11, 'shaunak@asepl.in', 9824034849, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(12, 'icgajjar@yahoo.com', 9428045998, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(13, 'hemant.microcut@gmail.com', 9825044095, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(14, 'ashishsbhaat@yahoo.com', 9712984514, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(15, 'narenvadher@ljinstitutes.edu.in', 9824027720, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(16, 'vani@platypus.in', 9824067064, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2017-12-06 01:56:55'),
+(98, 'jkalotra92@gmail.com', 8866724959, '705f376c791b5c83e3658f964ffd6e54', 'Student', '1', '2017-12-12 06:12:40'),
+(96, 'kevalmistry36@gmail.com', 7405418314, '8a759a54339850815f09d9d27faca446', 'Student', '1', '2017-12-12 05:56:29'),
+(97, 'shoaib.ljiet@gmail.com', 7405521335, '44417bc65ef21130d48b9a54e75f70f4', 'Student', '1', '2017-12-12 06:10:35'),
+(95, 'harsh@gmail.com', 7898458454, 'b0aa651c991deca550252ed6cbba99ba', 'Student', '1', '2017-12-12 05:49:09'),
+(94, 'alpeshpatel031@gmail.com', 9712289987, '2afdfa8674573704ff29679e4cea63ad', 'Student', '1', '2017-12-12 05:44:54'),
+(93, 'parth.gandhi@ljinstitutes.edu.in', 7878573442, '311b8e581625717971e97daf3bbf8a80', 'Student', '1', '2017-12-12 05:42:00'),
+(92, 'payal@gmail.com', 9898959894, 'c523e21f48573659a4a8f75cefc66477', 'Student', '1', '2017-12-12 05:38:49'),
+(71, 'djprajapati1056@outlook.com', 9727117148, '25f9e794323b453885f5181f1b624d0b', 'Student', '1', '2017-12-11 07:58:29'),
+(72, 'kushrao51@gmail.com', 9725232324, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:04:48'),
+(73, '123@gmail.com', 8769854324, '39ec1c79b65119fa4af4965c4b2f8548', 'Student', '1', '2017-12-11 08:24:31'),
+(74, 'nairuti.tlove@gmail.com', 8141486428, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:26:25'),
+(75, 'shardul@gmail.com', 9558831470, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:38:45'),
+(76, 'dhruvilmodi1412@gmail.com', 8905692699, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:43:42'),
+(77, 'vipul@gmail.com', 9722523691, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:49:32'),
+(78, '124@gmail.com', 8769854325, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:55:32'),
+(79, 'jinalshah109@gmail.com', 8690658588, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 08:57:06'),
+(80, 'shefashah20393@gmail.com', 9099595238, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 09:06:49'),
+(81, 'hardik.kyada29@gmail.com', 9685741230, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 09:19:10'),
+(82, 'patelamee3636@gmail.com', 792329636, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-11 09:37:47'),
+(83, 'djprajapati10@outlook.com', 2374523456, '25f9e794323b453885f5181f1b624d0b', 'Student', '1', '2017-12-11 09:44:47'),
+(84, 'nilaybparekh@yahoo.in', 9913885777, '355e4fb2d340affa08d216e78b464e4c', 'Student', '1', '2017-12-12 04:42:59'),
+(85, 'shweta.yagnik@ljinstitutes.edu.in', 9909012861, 'df95cb46b8417b418428e6b98461ca67', 'Student', '1', '2017-12-12 05:00:02'),
+(86, 'dur5991@gmail.com', 9016036290, '1a8dfd914515f98f86307ada6cc47038', 'Student', '1', '2017-12-12 05:06:30'),
+(87, 'nisarg.thakker@ljinstitutes.edu.in', 9925113662, 'b7ceb3e489457609c1cc3daa08151fb0', 'Student', '1', '2017-12-12 05:12:12'),
+(88, 'kunal.shah@ljinstitutes.edu.in', 9173606487, 'ca94aa55199b6b4a96f0b2611f71aa38', 'Student', '1', '2017-12-12 05:17:00'),
+(89, 'jigneshchhatbar@yahoo.in', 9904014018, '4fb55adf2473fb32b22614a4738597e0', 'Student', '1', '2017-12-12 05:25:22'),
+(90, 'soyeb@gmail.com', 9724418805, '0e1e3dcb6b4450d13ef8ca52f15b0062', 'Student', '1', '2017-12-12 05:29:51'),
+(91, 'ankit.motka@gmail.com', 8905912340, '55d3678052d8214a042757cbe12270d6', 'Student', '1', '2017-12-12 05:35:24'),
+(99, 'mahesh_kella@yahoo.com', 9725167067, '21a793fd3707203a97f1b09ebbd9b9bc', 'Student', '1', '2017-12-12 06:23:25'),
+(100, 'ripalgole@gmail.com', 9824947429, 'b0e2d4054356c2dbc95d2dfcff38ef25', 'Student', '1', '2017-12-12 06:25:41'),
+(101, 'yagneshanavadiya@gmail.com', 8487001548, '6f6b31f2fde2a609e0536d636651c849', 'Student', '1', '2017-12-12 06:25:56'),
+(102, 'amitadit.kachhadiya@gmail.com', 9033677345, '74e172ffbadcbdd9acedb406f246587b', 'Student', '1', '2017-12-12 06:27:51'),
+(103, 'neer_1991@yahoo.co.in', 9428600328, '62134aa3dccfa03d20d25cccdc4a7e0e', 'Student', '1', '2017-12-12 06:27:54'),
+(104, 'ravalruchik1116@gmail.com', 9558485897, '52af98aa720df28fa2cc4ed83e820b05', 'Student', '1', '2017-12-12 06:42:06'),
+(105, 'sunilkumar.patel@ljinstitutes.edu.in', 7383088304, '5647aaba185751e7a329b6b95ae73e60', 'Student', '1', '2017-12-12 07:41:21'),
+(106, 'alpesh.thesiya@gmail.com', 8128322236, 'e39e73694742e1ef38ae9d64845420c7', 'Student', '1', '2017-12-12 07:42:26'),
+(107, 'ravirajput230991@gmail.com', 9913049784, 'ae2eb3a82aa8c5a706691b7fe9903421', 'Student', '1', '2017-12-12 07:46:42'),
+(108, 'miteshrpatel03@gmail.com', 9725199477, 'd5f9b2345e538af80d93e4a28c3eb566', 'Student', '1', '2017-12-12 07:48:12'),
+(109, 'divyaparmar2094@gmail.com', 7405845405, 'b78f7769563ee23500161e8f75d9ed67', 'Student', '1', '2017-12-12 07:52:16'),
+(110, 'shwetagohel@gmail.com', 9409115088, '697117e224711f2a197c622d89a8cd06', 'Student', '1', '2017-12-12 07:52:24'),
+(111, 'nirav_rajan24@yahoo.com', 9898842082, '46f085b551f4080bee44b22e473bff9f', 'Student', '1', '2017-12-12 07:59:00'),
+(112, 'vivekdhagia@gmail.com', 8672929101, 'cdad6a300bc0f7222e5ea6e770dac45d', 'Student', '1', '2017-12-12 08:00:03'),
+(113, 'zahiralakhani67@gmail.com', 7405360639, 'b22cd3fa9ca32847d653f879e0f436a6', 'Student', '1', '2017-12-12 08:17:27'),
+(114, 'bhargavtrivedi1311@gmail.com', 9723617957, '36a8ecb52bb50abe0752c841b67049a5', 'Student', '1', '2017-12-12 08:22:14'),
+(115, 'zeelp23@gmail.com', 9909420187, '0659c7992e268962384eb17fafe88364', 'Student', '1', '2017-12-12 08:28:25'),
+(116, 'pratik9026@yahoo.in', 8866425276, '8d3ae7259fb735303b7b6dcda536cd69', 'Student', '1', '2017-12-12 08:34:10'),
+(117, 'sachin.patel@ljinstitutes.edu.in', 8128364851, '9b47daa3c8c689659ad44688824e22e2', 'Student', '1', '2017-12-12 09:01:14'),
+(118, 'dhavalpshah@ljinstitutes.edu.in', 9998277589, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-12 09:06:15'),
+(119, 'abc@gmail.com', 1234567891, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-12 10:09:46'),
+(120, 'nileshthakkar001@gmail.com', 9426867736, '4e0b84cdb2c78114eed9a0740973565d', 'Student', '1', '2017-12-13 04:30:38'),
+(121, 'ashutosh.sadaria@gmail.com', 9427571541, '22d912d8004b31868870c2c88c047464', 'Student', '1', '2017-12-13 04:34:08'),
+(122, 'ab@gmail.com', 1234567890, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-13 04:59:38'),
+(123, 'hitesh.sutharg@gmail.com', 9016749667, '1d0f071b6e5428bb961b6714d117a056', 'Student', '1', '2017-12-13 05:06:13'),
+(124, 'vh@gmsil.com', 6345657878, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-13 06:07:28'),
+(125, 'mkkella@ljinstitutes.org', 9725177777, '7cb323203b1306810d65271d8e9228ef', 'Student', '1', '2017-12-13 06:36:27'),
+(126, 'kumar@gmail.com', 9725167068, '7cb323203b1306810d65271d8e9228ef', 'Student', '1', '2017-12-13 07:23:16'),
+(127, 'nirav@gmail.com', 9725760615, '8db25460cd400abd3702f79ab891881d', 'Student', '1', '2017-12-13 09:19:13'),
+(128, 'mosam.pandya@ljinstitutes.edu.in', 9662304452, 'feae7f589b5526e5e4caf9762f2e5bca', 'Student', '1', '2017-12-13 16:40:52'),
+(129, 'drjigneshdoshi@gmail.com', 9876567898, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-15 01:38:10'),
+(130, 'jigdoshi@gmail.com', 9438250480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-15 03:16:03'),
+(131, 'abcd@gmail.com', 7873921693, 'b3f947379e88aab49c26f395aa0ebaee', 'Student', '1', '2017-12-15 05:54:13'),
+(132, 'abcde@gmail.com', 7873124567, '7bc6c31880aeda581aa34e218af25753', 'Student', '1', '2017-12-15 06:30:21'),
+(133, 'sp@sagarpanchal.com', 9099443884, 'b1bbed4c1b63e82b025aa3cd68adb3a0', 'Student', '1', '2017-12-15 11:04:55'),
+(134, 'abhinavk.shah@gmail.com', 9427021031, '1bbd886460827015e5d605ed44252251', 'Student', '1', '2017-12-15 15:21:43'),
+(135, 'bas@gmail.com', 9524350480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-15 23:04:19'),
+(136, 'alokmanke@yahoo.com', 9426360744, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-16 07:49:40'),
+(137, 'ajay@gmail.com', 9377467633, '1bbd886460827015e5d605ed44252251', 'Student', '1', '2017-12-18 06:42:38'),
+(138, 'aajay@gmail.com', 9878654329, 'efa545d71e354efbfa6cbe8bbae9ed67', 'Student', '0', '2017-12-18 07:27:09'),
+(139, 'doshijig@gmail.com', 9428350480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-20 03:52:41'),
+(140, 'jignesh.doshi@ljinstitutes.edu.in', 8928350480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-20 01:01:49'),
+(142, 'sch.cyme@gmail.com ', 9885333013, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', NULL),
+(146, 'aatish@cactuscreatives.com', 9898119870, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', NULL),
+(144, 'RJamin', 9099968122, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', NULL),
+(145, 'gprasad@plasmatech.co.in', 9426707954, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', NULL),
+(147, 'm@gmail.com', 1234567899, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-21 09:59:13'),
+(148, 'mk@gmail.com', 9938350480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2017-12-26 01:56:53'),
+(149, 'cd@gmail.com', 9728350480, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-01-05 03:59:46'),
+(150, 'dvu@gmail.com', 9812397123, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-01-09 21:51:11'),
+(151, 'rizwan@gmail.com', 9824340580, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-01-10 09:54:17'),
+(152, 'bhushan@ljinstitutes.edu.in', 9033096486, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2018-01-21 20:26:55'),
+(153, 'miteshmukeshbhai.patel@gmail.com', 9913694264, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2018-01-21 20:26:55'),
+(154, 'zishan@ljinstitutes.edu.in', 9724213041, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2018-01-21 20:26:55'),
+(155, 'mohit.modi_ljiet@ljinstitutes.edu.in', 9033096487, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2018-01-21 20:26:55'),
+(156, 'kikku1819@gmail.com', 9033096488, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '2018-01-21 20:26:55'),
+(157, 'sbodhisattwa@gmail.com', 9040005666, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-01-24 23:11:16'),
+(158, 'sr@gmail.com', 9898989898, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-05-11 07:39:04'),
+(159, 'j@gmail.com', 1234567800, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-05-13 22:45:25'),
+(160, 'het@gmail.com', 9878000000, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-05-13 22:57:11'),
+(161, 'palash@gmail.com', 9478569321, '25d55ad283aa400af464c76d713c07ad', 'Student', '1', '2018-05-24 01:22:57'),
+(162, 'alok.manke@ljinstitues.edu.in', 9426360644, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(163, 'bhavin.shah@ljinstitues.edu.in', 9924553302, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(164, 'sujoy.pal@ljinstitutes.edu.in', 8980246563, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(165, 'sangeeta.rajole@ljinstitues.edu.in', 9227227333, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(166, 'tejas.mehta@ljinstitues.edu.in', 9998342272, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(167, 'meetu.joshi@ljinstitues.edu.in', 9825571573, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(168, 'shanti.verma@ljinstitues.edu.in', 9714917493, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(169, 'lajja.choksi@ljinstitues.edu.in', 9724124714, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(170, 'monica.gahlawat@ljinstitues.edu.in', 9638510606, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(171, 'urja.mankad@ljinstitues.edu.in', 9825070377, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(172, 'ritisha.parmar@ljinstitues.edu.in', 9426889185, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(173, 'heta.bhatt@ljinstitues.edu.in', 9033217514, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(174, 'rinkal.sardhara@ljinstitues.edu.in', 9978137841, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(175, 'sheenu.singh@ljinstitues.edu.in', 9727253095, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(176, 'sarfaraj.patel@ljinstitues.edu.in', 9016668403, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(177, 'dhaval.patel@ljinstitues.edu.in', 9825780739, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(178, 'ankur.dey@ljinstitues.edu.in', 7567939989, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(179, 'sona.gadani@ljinstitues.edu.in', 9638099671, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(180, 'a.anuradha@ljinstitues.edu.in', 9601433044, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(181, 'anu.thomas@ljinstitues.edu.in', 9428001847, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(182, 'jinal.baxi@ljinstitues.edu.in', 8000717134, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(183, 'vaibhavi.choksi@ljinstitues.edu.in', 8866847262, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(184, 'pankti.patel_ljmca@ljinstitues.edu.in', 9909281731, '1bbd886460827015e5d605ed44252251', 'Mentor', '1', '0000-00-00 00:00:00'),
+(190, 'vm@gmail.com', 9428354321, '25d55ad283aa400af464c76d713c07ad', 'Mentor', '1', '2018-06-19 03:09:23'),
+(189, 'cbuch@gmail.com', 1478963256, '25d55ad283aa400af464c76d713c07ad', 'Mentor', '1', '2018-06-18 05:12:29');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

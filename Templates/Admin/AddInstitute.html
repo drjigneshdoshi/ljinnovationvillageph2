@@ -1,0 +1,59 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <form id="registerInstitute">
+        <div class="inner">
+            
+            <div class="row uniform">
+                <div class="12u" style="position:fixed;width:75%;background-color:white;">
+                    <br>
+					<br>
+					
+                    <span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+                        <i class="material-icons">domain</i>Add Institute
+                    </span>
+                    
+					<span style="float:right" class="buttons">
+                        <a href="#/Admin/Institutes">
+                            <i class="material-icons">close</i> Close
+                        </a>
+                 </span>
+				 <hr>
+                </div>
+				<br><br><br><br>
+                <div class="12u">
+                    <div class="row uniform">
+                        <div class="8u 12u$(xsmall)">
+                            <h4>Institute Name*</h4>
+                            <br>
+							<input placeholder="Institute Name" name="inst_name" class="input-fields" id="instname" type="text" class="validate"
+								pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Stream name must be 3 Characters long')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required>
+                                </div>
+                        <div class="4u 12u$(xsmall)">
+								<BR><BR><BR>
+								
+						<ul class="actions" style="float:right;">
+                        <li>
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="registerInstitute" value="true">
+                            <input type="submit" value="Submit " id="registerInstitute"
+							
+							class="button" style="color: white !important;background-color:rgb(155,0,50);"
+								/>
+						</li>
+						</ul>
+
+						</div>
+                    </div>
+
+
+                </div>
+                
+				
+            </div>
+        </div>
+        
+    </form>
+</section>
+<script type="text/javascript">
+</script>

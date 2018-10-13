@@ -1,0 +1,110 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="manageProjects">
+                <div class="row uniform" class="header-margin-double">
+					<div class="6u 12u$(xsmall)">
+                    
+						<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+							<i class="material-icons">account_circle</i> Registered Projects List
+						</span>				
+					</div>
+						<!--
+					<div class="3u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="3u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branches</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+                    -->
+                    <div class="6u 12u$(xsmall)">
+                       
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="manage_project" value="true">
+							 <input type="hidden" name="edit_project" value="true">
+                            <!-- <input type="submit" value="Search" id="editProject" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            /> -->
+							</center>
+							<h4>
+								<center>
+									<a style="color:#3b5998;" href="#/Student/AddProject">
+										<i class="material-icons" style="font-size:2em !important;">add_circle_outline</i>
+										<br> Add Project for LJ Innovation Village 2019</a>
+								</center>
+							</h4>							
+                        </div>
+                    </div>
+					</div>
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="5%">
+                                        No.
+                                    </th>
+                                    <th >
+                                        Project Description
+                                    </th>
+                                   <th width="10%">
+                                       Edit Project
+									</th>
+									<th width="10%">
+                                       View Project
+									</th>
+									
+                                
+								</tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projects | filter:{ project_branch: selected_branch ,project_stream : selected_stream }:true">
+								<td>
+                                        <b>{{$index+1}}.</b>
+                                </td>
+									<td>
+										<b>
+											        <b style="color:rgb(155,0,50);">
+                                                        {{project.project_title}}</b>
+                                            
+										</b>
+									</td>
+									<td>
+									<!-- 
+										<a href="#/Student/EditProject/{{project.project_id}}">
+										<i class="material-icons" style="font-size:100% !important;">edit</i> Edit</a>
+										-->
+										<a href="#/Student/EditProject/{{project.project_id}}" ng-if="project.project_year == '9999'" style="color:green;" ><i class="material-icons"  style="color:green;">edit </i> Edit </a>
+									</td>
+									<td>
+										<a href="#/Student/ViewProject/{{project.project_id}}"  style="color:red;" ><i class="material-icons"  style="color:red;">view_module</i> View</a>
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

@@ -1,0 +1,142 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+			<br><br><br>
+			<form id="manageMentors">
+			<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+				<i class="material-icons">view_module</i>Manage Mentors
+			</span>
+		    <span style="float:right" class="buttons">
+			  <a href="" ng-click="show_masters_page()">
+				 <i class="material-icons">arrow_back</i> Back
+				 </a>
+			</span>
+
+
+			<div class="row uniform" class="header-margin-double">
+                    <div class="3u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="3u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branches</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+					<div class="3u 12u$(xsmall)">
+                        <h6>Mentor Type</h6>
+                        <select ng-model="selected_type" ng-change="changeFilter()" class="browser-default">
+							<option value="" selected>All Type</option>
+							<option value="Financial Marketing">Financial Marketing</option>
+							<option value="Prototype">Industry</option>
+							<option value="Design">Design</option>
+							<option value="Technical Academic">Technical Academic</option>
+						</select>
+                    </div>
+					<div class="3u 12u$(xsmall)">
+						<br>
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="manageMentors" value="true">
+                            <input type="submit" value="Search" id="manageMentors" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </center>
+					</div>
+					<div class="12u 12u$(xsmall)">
+						<h5>
+							<center>
+								<a style="color:#3b5998;" href="#/Admin/registerMentor">
+									<i class="material-icons" style="font-size:2em !important;">add_circle_outline</i>
+									 click here to add New Mentor</a>
+							</center>
+							</h5>
+							</div>
+                    </div>
+
+					
+					
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="5">
+                                        No.
+                                    </th>
+									
+                                    <th width="35%">
+                                        Mentor Name
+                                    </th>
+									<th width="28%">Stream </th>
+									<th width="27%">Braanch </th>
+
+									<th width="5%">
+										Mentor Type
+									</th>
+									<!--                                    <th width="15">
+                                        <input type="checkbox" id="projects" class="groups" onChange="selectAll(this.id);" style="border:2px dotted #00f;display:block;background:#ff0000;">
+                                        <label for="projects"></label>
+                                    </th> -->
+                                                                    </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="mentor in mentors | filter:{ stream: selected_stream, branch: selected_branch, mentor_type:selected_type }:true">
+                           
+                                    <td >
+                                      <!--  <b>{{$index+1}}.</b> -->
+									  {{mentor.mentor_id}}.
+                                    </td>
+                                    <td >
+									<details> 
+									  <summary><b style="color:rgb(155,0,50);">{{mentor.mentor_name}} </b> </summary>
+									   <table>
+											<tr>
+											 <td> EmailId : </td>
+											 <td ><b style="color:rgb(155,0,50);"> {{mentor.email}}</b></td>
+											</tr>
+											<tr>
+											 <td> Contact : </td>
+											 <td ><b style="color:rgb(155,0,50);"> {{mentor.contact}}</b></td>
+											</tr>
+											
+											<TR >
+											 <td>Organization:</td>
+											 <td ><b style="color:rgb(155,0,50);"> {{mentor.organization_name}}</b>
+											 </td>
+											</tr> 
+											<tr>
+											 <td> Specialization: </td>
+											 <td ><b style="color:rgb(155,0,50);"> {{mentor.specialization_name}}</b></td>
+											</tr> 
+											
+							            </table>   
+									 </details> 
+									</td>
+									<td ><b style="color:rgb(155,0,50);">{{mentor.stream_name}} </b></td>
+									<td ><b style="color:rgb(155,0,50);">  {{mentor.branch_name}}</b></td>
+									 <td ><b style="color:rgb(155,0,50);">{{mentor.mentor_type}} </b></td>
+
+									
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

@@ -1,0 +1,296 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <div class="inner">
+        <br>
+        <h2 style="color: #3b5998;">
+            <i class="material-icons">account_circle</i>Add Project</h2>
+        <hr>
+        <div class="row uniform">
+            <div class="12u">
+                <form id="addProject">
+                    <div class="row uniform">
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Title*</h6>
+                            <!-- <input placeholder="Project Title" name="project_title" class="input-fields" id="full_name" type="text" class="validate"
+                                pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Title name must be 3 Characters long')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required> -->
+								<!-- <select name="project_stream" class="browser-default" required>
+									<option value="" disabled selected>Select project name</option>
+									<option ng-repeat="project in projects" value="{{project.project_id}}">
+										{{project.project_name}}
+									</option>
+								</select> -->
+								<select name="project_stream" class="browser-default" required>
+                                <option value="" disabled selected>Select Project name</option>
+                                <option ng-repeat="problem in problems" value="{{problem.problem_id}}">
+                                    {{problem.problem_title}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Abstract of the project/innovation ( max 150 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_abstract" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Uniqueness/Novelty of your project ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_uniqueness" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>What exact problem your innovation is trying to solve? (max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_problem_definition" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Market potential and competitive advantage of your project ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_market_potential" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Mention potential impact of your solution ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_potential_impact" class="materialize-textarea input-fields" data-length="500"  maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Scope , Design and Resource requirement to make your project to a product/solution ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="project_scope_resource_requirement" class="materialize-textarea input-fields" data-length="500" maxlength=500
+                                required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Background of innovation or prior art ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="background_of_inventor" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Institute/College/Organization Name*</h6>
+                            <input placeholder="Project Institute Name" name="institute_name" class="input-fields" id="full_name" type="text" class="validate"
+                                pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Only Charecters are allowed in Institute/Organization Name')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>State*</h6>
+                            <select id="state" onchange="displayCities(this.value)" name="institute_state" class="browser-default" required>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>City*</h6>
+                            <select name="institute_city" id="cities" class="browser-default" required>
+                                <option disabled selected>Select City</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide Honorific</h6>
+                            <select name="guide_honorific" class="browser-default">
+                                <option value="" selected>Mr./Ms./Dr. (Not Selected)</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="Dr.">Dr.</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide First Name</h6>
+                            <input placeholder="Guide First Name" name="guide_first_name" class="input-fields" id="full_name" type="text" pattern="^[a-zA-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Guide first name must be 3 Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Guide Last Name</h6>
+                            <input placeholder="Guide Last Name" name="guide_last_name" class="input-fields" id="full_name" type="text" pattern="^[a-zA-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Guide last name must be 3 Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Guide Contact (Mobile Number)</h6>
+                            <input type="text" name="guide_contact" value="" placeholder="Enter contact number" pattern="[0-9]{10}" oninvalid="setCustomValidity('Invalid guide Contact Number')"
+                                onchange="try{setCustomValidity('')}catch(e){}"/>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Guide Email Address</h6>
+                            <input placeholder="Project Guide Email ID" name="guide_email" class="input-fields" id="full_name" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                value="" oninvalid="setCustomValidity('Invalid guide Email Address')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide Honorific</h6>
+                            <select name="co_guide_honorific" class="browser-default">
+                                <option value="" selected>Mr./Ms./Dr. (Not Selected)</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="Dr.">Dr.</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide First Name</h6>
+                            <input placeholder="Co-Guide First Name" name="co_guide_first_name" class="input-fields" id="full_name" type="text" pattern="^[a-zA-Z\S]{3,30}$"
+                                oninvalid="setCustomValidity('Co-guide first name must be 3 Characters long with no space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Co-Guide Last Name</h6>
+                            <input placeholder="Co-Guide Last Name" name="co_guide_last_name" class="input-fields" id="full_name" type="text" pattern="^[a-zA-Z]{3,30}$"
+                                oninvalid="setCustomValidity('Co-guide last name must be 3 Characters long with no  space and special characters')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Co-Guide Contact (Mobile Number)</h6>
+                            <input type="text" name="co_guide_contact" value="" placeholder="Enter contact number" pattern="[0-9]{10}" oninvalid="setCustomValidity('Invalid co-guide Contact number')"
+                                onchange="try{setCustomValidity('')}catch(e){}" />
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Co-Guide Email Address</h6>
+                            <input placeholder="Co-Guide Email ID" name="co_guide_email" class="input-fields" id="full_name" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                value="" oninvalid="setCustomValidity('Invalid Email Address')" onchange="try{setCustomValidity('')}catch(e){}">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Stages*</h6>
+                            <select name="project_category" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Status</option>
+                                <option value="Proof of Concept">Proof of Concept</option>
+                                <option value="Prototype">Prototype</option>
+                                <option value="Product">Product</option>
+                                <option value="Start Up">Start Up</option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Stream*</h6>
+                            <select name="project_stream" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Stream</option>
+                                <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                    {{stream.stream_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Project Branch*</h6>
+                            <select name="project_branch" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Branch</option>
+                                <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                    {{branch.branch_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="2u 12u$(xsmall)">
+                            <h6>Team Size*</h6>
+                            <select name="team_size" onchange="loadTeamMembersFields(this.value);" class="browser-default" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                        <div class="10u 12u$(xsmall)">
+                            <div class="row" style="margin-top:none;">
+                                <div class='2u 12u$(xsmall)'>
+                                    <h6>Honorific*</h6>
+                                    <select name="team_member_honorific1" class='browser-default'
+                                        required>
+                                        <option value='' disabled selected>Mr./Ms./Dr.</option>
+                                        <option value='Mr.'>Mr.</option>
+                                        <option value='Ms.'>Ms.</option>
+                                        <option value='Dr.'>Dr.</option>
+                                    </select>
+                                </div>
+                                <div class='3u 12u$(xsmall)'>
+                                    <h6>First Name*</h6>
+                                    <input name="team_member_first_name1" placeholder="First Name" id="video_url" type="text" value="{{cookie.first_name}}" readonly="readonly">
+                                </div>
+                                <div class='2u 12u$(xsmall)'>
+                                    <h6>Last Name*</h6>
+                                    <input name="team_member_last_name1" placeholder="Last Name" id="Video_Url" class="input-fields" id="video_url" type="text" value="{{cookie.last_name}}" readonly="readonly">
+                                </div>
+								<div class='3u 12u$(xsmall)'>
+                                    <h6>Email*</h6>
+                                    <input name="team_member_email1" placeholder="Email" id="Video_Url" class="input-fields" id="video_url" type="text" value="{{cookie.email}}" readonly="readonly">
+                                </div>
+								<div class='2u 12u$(xsmall)'>
+                                    <h6>Contact*</h6>
+                                    <input name="team_member_contact1" placeholder="Contact" id="Video Url" class="input-fields" id="video_url" type="text" value="{{cookie.contact}}" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="row" id="team_members">
+                            </div>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Video Link</h6>
+                            <br>
+                            <input name="video" placeholder="Video Url" class="input-fields" id="video_url" type="text">
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Report (.pdf file Max 2mb)
+                                <a href="pdf/template Content.pdf" style="color:rgb(155,0,50);">Sample pdf</a>
+                            </h6>
+                            <br>
+                            <input placeholder="College Name" name="project_report_file" class="input-fields" id="report_pdf" type="file" class="validate"
+                                onchange="preview_report(event);" >
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Image* (.jpg file Max 300kb) <br>
+							<a href="pdf/How to Compress the Photo.pdf" style="color:rgb(155,0,50);"> (How to compress file? )</a>
+                                                        </h6><br>
+                            <input placeholder="College Name" name="image" class="input-fields" id="photo" type="file" ng-model="project.project_image"
+                                onchange="preview_image(event);" class="validate" required>
+                        </div>
+                        <!-- <div class="3u 12u$(xsmall)">
+                           
+                        </div> -->
+                    </div>
+                    <div class="12u$">
+
+                        <img id="output_image" style="max-width:150px;max-height:100px;float:right;" />
+                        <center>
+                            <ul class="actions">
+                                <li>
+                                    <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                                    <input type="hidden" name="email" value="{{cookie.email}}">
+                                    <input type="hidden" name="register_project" value="true">
+                                    <input type="submit" value="Submit Project" id="registerStudent" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                                    />
+                                </li>
+                            </ul>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<script type="text/javascript">
+    var jsonData;
+    $.getJSON("assets/json/states.json", function (data) {
+        jsonData = data;
+        var str = "<option value='' disabled selected>Select State</option>";
+        $.each(Object.keys(data), function (key, value) {
+            str += "<option value='" + value + "'>" + value + "</option>";
+        });
+        $("#state").html(str + "</select>");
+    });
+
+    function displayCities(state) {
+        var str = "<option value='' disabled selected>Select Cities</option>";
+        $.each(jsonData[state], function (key, value) {
+            str += "<option value='" + value + "'>" + value + "</option>";
+        });
+        $("#cities").html(str + "</select>");
+    }
+    //loadTeamMembersFields(1);
+
+    function loadTeamMembersFields(n) {
+        var str = "";
+        for (i = 2; i <= n; i++) {
+            str += "<div class='2u 12u$(xsmall)'><h6>Honorific*</h6><select name='team_member_honorific" + i +
+                "' class='browser-default' required><option value='' disabled selected>Mr./Ms./Dr.</option><option value='Mr.'>Mr.</option><option value='Ms.'>Ms.</option><option value='Dr.'>Dr.</option></select></div><div class='4u 12u$(xsmall)'><h6>First Name*</h6><input name='team_member_first_name" +
+                i +
+                "' placeholder='First Name' class='input-fields' id='full_name' type='text' class='validate' pattern='^[a-zA-Z]{3,30}$' oninvalid=\"setCustomValidity('Team member Firstname must be 3 Characters long')\" onchange=\"try{setCustomValidity('')}catch(e){}\" required></div><div class='4u 12u$(xsmall)'><h6>Last Name*</h6><input name='team_member_last_name" +
+                i +
+                "' placeholder='Last Name' class='input-fields' id='full_name' type='text' class='validate' pattern='^[a-zA-Z]{3,30}$' oninvalid=\"setCustomValidity('Teammember Last name must be 3 Characters long')\" onchange=\"try{setCustomValidity('')}catch(e){}\" required></div>"+
+				i+
+				"' placeholder='Email' class='input-fields' id='team_email' type='text' class='validate' pattern='^[a-zA-Z]{3,30}$' oninvalid=\"setCustomValidity('Teammember email must be 3 Characters long')\" onchange=\"try{setCustomValidity('')}catch(e){}\" required></div>"+
+				i+
+				"' placeholder='Contact' class='input-fields' id='team_contact' type='text' class='validate' pattern='^[a-zA-Z]{3,30}$' oninvalid=\"setCustomValidity('Teammember contact must be 10 Characters long')\" onchange=\"try{setCustomValidity('')}catch(e){}\" required></div>";
+        }
+        $("#team_members").html(str);
+    }
+</script>

@@ -1,0 +1,279 @@
+<div class="row uniform" class="header-margin-double">
+        <div class="8u -2u 12u(xsmall)">
+    <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+        <br>
+        <br>
+        <br>
+
+        <div class="row uniform" class="header-margin-double" ng-hide="project_table">
+            <div class="3u 12u$(xsmall)">
+                <h6>Project Stream</h6>
+                <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                    <option value="" selected>All Streams</option>
+                    <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                        {{stream.stream_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="3u 12u$(xsmall)">
+                <h6>Project Branch</h6>
+                <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                    <option value="" selected>All Branches</option>
+                    <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                        {{branch.branch_name}}
+                    </option>
+
+                </select>
+            </div>
+            <div class="3u 12u$(xsmall)">
+                <h6>Category</h6>
+                <select ng-model="selected_category" required>
+                    <option value="" selected>All Category</option>
+                    <option value="Proof of Concept">Proof of Concept</option>
+                    <option value="Prototype">Prototype</option>
+                    <option value="Product">Product</option>
+                    <option value="Start Up">Start Up</option>
+                </select>
+            </div>
+            <div class="3u 12u$(xsmall)">
+                <h6>Mentor</h6>
+                <select name="mentor_id" ng-model="selected_mentor" required>
+                    <option value="" selected>All Mentors</option>
+                    <option ng-repeat="mentor in mentors | filter:{ stream: selected_stream, branch: selected_branch }" value="{{mentor.mentor_id}}">
+                        {{mentor.mentor_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="12u 12u$(xsmall)">
+                <table class="table-wrapper">
+                    <thead>
+                        <tr>
+                            <th width="15">
+                                No.
+                            </th>
+                            <th>
+                                Project Details(Click to Explore)
+                            </th>
+                            <th>
+                                Category
+                            </th>
+                            <th width="250">
+                                Average Rating
+                            </th>
+                            <th sidth="100">
+                                <input type="radio" id="all_projects" name="selected_filter" value="" ng-model="selected_filter" selected/>All<br>
+                                <input type="radio" id="selected" name="selected_filter" value="1" ng-model="selected_filter"/>Selected<br>
+                                <input type="radio" id="not_selected" name="selected_filter" value="0" ng-model="selected_filter"/>Not Selected
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="project in projects | filter:{ project_stream: selected_stream, project_branch: selected_branch, mentor_id: selected_mentor , project_category: selected_category, project_selected: selected_filter}: true | orderBy:'-average_rating'">
+                            <td>
+                                <b>{{$index+1}}.</b>
+                            </td>
+                            <td>
+                                <b>
+                                    <a href="" ng-click="open_project(project.project_id)">
+                                        <b style="color:rgb(155,0,50);">{{project.project_title}}</b>
+                                    </a>
+                                </b>
+                            </td>
+                            <td>
+                                {{project.project_category}}
+                            </td>
+                            <td>
+                                <fieldset class="rating" style="margin:0;padding:0;">
+                                    <input type="radio" id="{{project.project_title}}10" name="{{project.project_title}}" value="10" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="full" for="{{project.project_title}}10" title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}9" name="{{project.project_title}}" value="9" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="half" for="{{project.project_title}}9" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}8" name="{{project.project_title}}" value="8" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="full" for="{{project.project_title}}8" title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}7" name="{{project.project_title}}" value="7" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="half" for="{{project.project_title}}7" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}6" name="{{project.project_title}}" value="6" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="full" for="{{project.project_title}}6" title="Meh - 3 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}5" name="{{project.project_title}}" value="5" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="half" for="{{project.project_title}}5" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}4" name="{{project.project_title}}" value="4" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="full" for="{{project.project_title}}4" title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}3" name="{{project.project_title}}" value="3" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="half" for="{{project.project_title}}3" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="{{project.project_title}}2" name="{{project.project_title}}" value="2" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="full" for="{{project.project_title}}2" title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="{{project.project_title}}1" name="{{project.project_title}}" value="1" ng-model="project.average_rating"
+                                        disabled/>
+                                    <label class="half" for="{{project.project_title}}1" title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
+                            </td>
+                            <td>
+                                <a href="" ng-if="project.project_selected == '0'" style="color:red;" ng-click="selected_toggle(project.project_id)"><i class="material-icons"  style="color:red;">close</i> Not Selected (Click To Select)</a>
+                                <a href="" ng-if="project.project_selected == '1'" style="color:green;" ng-click="selected_toggle(project.project_id)"><i class="material-icons"  style="color:green;">done</i> Selected (Click to Remove Selection)</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="12u 12u$(xsmall)" ng-hide="project_details">
+            <div style="margin:2em;">
+                <a href="" style="float:right;" ng-click="show_project_table()">
+                    <i class="material-icons" style="color: rgb(155,0,50);">close</i>
+                </a>
+                <a href="images/project/{{projects[selected_project].project_id}}/{{projects[selected_project].project_image}}" target="_BLANK">
+                    <img ng-src="images/project/{{projects[selected_project].project_id}}/{{projects[selected_project].project_image}}" height="100">
+                </a>
+                <h1>
+                    <span style="vertical-align:top;">{{projects[selected_project].project_title}}</span>
+                </h1>
+                <h4>
+                    {{projects[selected_project].project_category}} - {{projects[selected_project].stream_name}} - {{projects[selected_project].branch_name}}
+                </h4>
+                <p>{{projects[selected_project].institute_name}} - {{projects[selected_project].institute_state}} - {{projects[selected_project].institute_city}}
+                </p>
+                <h5>
+                    <a href="images/project/{{projects[selected_project].project_id}}/{{projects[selected_project].project_report_file}}" target="_BLANK">Documentation</a>
+                    <a href="{{projects[selected_project].project_video}}" target="_BLANK">Video Link</a>
+                </h5>
+                <hr>
+                <h3>Abstract of the project/innovation</h3>
+                <p>{{projects[selected_project].project_abstract}}
+                </p>
+                <h3>Uniqueness/Novelty of the project </h3>
+                <p>{{projects[selected_project].project_uniqueness}}
+                </p>
+                <h3>What exact problem your innovation is solved?</h3>
+                <p>{{projects[selected_project].project_problem_definition}}
+                </p>
+                <h3>Market Potential and Competitive Advantage of the project?</h3>
+                <p>{{projects[selected_project].project_market_potential}}
+                </p>
+                <h3>Potential Impact of the solution</h3>
+                <p>{{projects[selected_project].project_potential_impact}}
+                </p>
+                <h3>Scope , Design and Resource Requirement to make project to a product/solution</h3>
+                <p>{{projects[selected_project].porject_scope_resource_requirement}}
+                </p>
+                <h3>Background of innovation or prior art</h3>
+                <p>{{projects[selected_project].background_of_inventor}}
+                </p>
+                <h3>Guide Details</h3>
+                <table>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            <h5>Guide Details</h5>
+                        </th>
+                        <th>
+                            <h5>Co-Guide Details</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Name:</h5>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].guide_name}}</p>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].co_guide_name}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Contact:</h5>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].guide_contact}}</p>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].co_guide_contact}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Email:</h5>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].guide_email}}</p>
+                        </td>
+                        <td>
+                            <p>{{projects[selected_project].co_guide_email}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Team Members:</h5>
+                        </td>
+                        <td colspan="2">
+                            <p>{{projects[selected_project].team_member_names}}</p>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th width="20%">
+                            Quality of Innovation / Novelty / Uniqueness
+                        </th>
+                        <th width="20%">
+                            Potential Impact / Market
+                        </th>
+                        <th width="20%">
+                            Technical Strength / Rigour
+                        </th>
+                        <th width="20%">
+                            Team Contribution and Overall Effort
+                        </th>
+                        <th width="20%">
+                            Approach of the Team to Solve the Challenge
+                        </th>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="ele in ratings">
+                            <fieldset class="rating">
+                                <input type="radio" id="{{ele.name}}10" name="{{ele.name}}" value="10" ng-model="ele.value" disabled/>
+                                <label class="full" for="{{ele.name}}10" title="Awesome - 5 stars"></label>
+                                <input type="radio" id="{{ele.name}}9" name="{{ele.name}}" value="9" ng-model="ele.value" disabled/>
+                                <label class="half" for="{{ele.name}}9" title="Pretty good - 4.5 stars"></label>
+                                <input type="radio" id="{{ele.name}}8" name="{{ele.name}}" value="8" ng-model="ele.value" disabled/>
+                                <label class="full" for="{{ele.name}}8" title="Pretty good - 4 stars"></label>
+                                <input type="radio" id="{{ele.name}}7" name="{{ele.name}}" value="7" ng-model="ele.value" disabled/>
+                                <label class="half" for="{{ele.name}}7" title="Meh - 3.5 stars"></label>
+                                <input type="radio" id="{{ele.name}}6" name="{{ele.name}}" value="6" ng-model="ele.value" disabled/>
+                                <label class="full" for="{{ele.name}}6" title="Meh - 3 stars"></label>
+                                <input type="radio" id="{{ele.name}}5" name="{{ele.name}}" value="5" ng-model="ele.value" disabled/>
+                                <label class="half" for="{{ele.name}}5" title="Kinda bad - 2.5 stars"></label>
+                                <input type="radio" id="{{ele.name}}4" name="{{ele.name}}" value="4" ng-model="ele.value" disabled/>
+                                <label class="full" for="{{ele.name}}4" title="Kinda bad - 2 stars"></label>
+                                <input type="radio" id="{{ele.name}}3" name="{{ele.name}}" value="3" ng-model="ele.value" disabled/>
+                                <label class="half" for="{{ele.name}}3" title="Meh - 1.5 stars"></label>
+                                <input type="radio" id="{{ele.name}}2" name="{{ele.name}}" value="2" ng-model="ele.value" disabled/>
+                                <label class="full" for="{{ele.name}}2" title="Sucks big time - 1 star"></label>
+                                <input type="radio" id="{{ele.name}}1" name="{{ele.name}}" value="1" ng-model="ele.value" disabled/>
+                                <label class="half" for="{{ele.name}}1" title="Sucks big time - 0.5 stars"></label>
+                            </fieldset>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

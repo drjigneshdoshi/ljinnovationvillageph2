@@ -1,0 +1,139 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+	<div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+		
+		<form id="registerMentor">
+                 <span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+                        <i class="material-icons">domain</i>Add Mentor
+                    </span>
+               <span style="float:right" class="buttons">
+				  <a href="" ng-click="show_mentors_page()">
+					 <i class="material-icons">arrow_back</i> Close
+					 </a>
+				</span>
+				<HR>
+        		
+			<div class="row uniform" class="header-margin-double">
+
+                <div class="4u 12u$(xsmall)">
+                            <h4>Mentor Name*</h4>
+                            <input type="text" maxlength="50" placeholder="Enter your  Name" name="first_name" pattern="^[a-zA-Z\s]{3,50}$" oninvalid="setCustomValidity('Only Characters Allowed with Min 3 Characters ( No Special or Spaces allowed)')"
+                            onchange="try{setCustomValidity('')}catch(e){}" required/>
+                </div>
+				<div class="4u 12u$(xsmall)">
+                            <h4>Project Stream*</h4>
+                            <select name="project_stream" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Stream</option>
+                                <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                    {{stream.stream_name}}
+                                </option>
+                            </select>
+                </div>
+                <div class="4u 12u$(xsmall)">
+                            <h4>Project Branch*</h4>
+                            <select name="project_branch" class="browser-default" required>
+                                <option value="" disabled selected>Select Project Branch</option>
+                                <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                    {{branch.branch_name}}
+                                </option>
+                            </select>
+                </div>
+
+<!--                <div class="4u 12u$(xsmall)">
+                            <h6>Middle Name</h6>
+                            <input type="text" pattern="^[a-zA-Z]{1,30}$" name="middle_name" value="" placeholder="Enter your Middle Name" oninvalid="setCustomValidity('Only Characters Allowed')"
+                            onchange="try{setCustomValidity('')}catch(e){}"/>
+                </div>
+                <div class="4u 12u$(xsmall)">
+                            <h6>Last Name*</h6>
+                            <input type="text" pattern="^[a-zA-Z]{3,30}$" name="last_name" value="" placeholder="Enter your Last Name" oninvalid="setCustomValidity('Only Characters Allowed with Min 3 Characters ( No Special or Spaces allowed)')"
+                            onchange="try{setCustomValidity('')}catch(e){}" required/>
+                </div>  -->
+				
+                <div class="4u 12u$(xsmall)">
+							<h4>Mentor Type</h4>
+							<select ng-model="selected_type" ng-change="changeFilter()" class="browser-default" >
+								<option value="Financial Marketing">Financial Marketing</option>
+								<option value="Prototype">Industry</option>
+								<option value="Design">Design</option>
+								<option value="Technical Academic">Technical Academic</option>
+							</select>
+				</div>
+				<div class="4u 12u$(xsmall)">
+                            <h4>Gender*</h4>
+                			<select name="gender" ng-model="mentor.gender" required>
+								<option value="">- Select Gender -</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+                             </select>
+				</div>
+				<div class="4u 12u$(xsmall)">
+                            <h4>Email*</h4>
+                            <input type="email" name="mentor_email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" oninvalid="setCustomValidity('Invalid Email Address')" onchange="try{setCustomValidity('')}catch(e){}" required/>
+                </div>
+               
+					<div class="row uniform">
+					    <div class="4u 12u$(xsmall)">
+                            <h4>Contact (Mobile Number)*</h4>
+                            <input type="text" name="contact" value="" placeholder="Enter contact number" pattern="[0-9]{10}" value="" oninvalid="setCustomValidity('Invalid Contact')" onchange="try{setCustomValidity('')}catch(e){}" required/>
+                        </div>
+
+                        <div class="5u 12u$(xsmall)">
+                            <h4>Password* (Minimum 8 Characters)</h4>
+                            <input type="password" name="password" ng-model="register_password" placeholder="Enter password" required/>
+                        </div>
+                        <div class="3u 12u$(xsmall)">
+                            <h4>Confirm Password*</h4>
+                            <input type="password" name="confirm_password" ng-model="confirm_password"  placeholder="Confirm your password" required/>
+                        </div>
+					</div>
+					
+	
+   				<div class="row uniform">
+							<div class="5u 12u$(xsmall)">
+								<h4>Organization Name <BR>( max 50 characters)*</h4>
+								<input placeholder="Organization_Name" name="organization_name" class="input-fields" id="organization_name" type="text" class="validate"
+									pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Organization name must be 3 Characters long')"
+									onchange="try{setCustomValidity('')}catch(e){}" required>
+							</div>
+							<div class="4u 12u$(xsmall)">
+								<h4>Specialization Name<BR>( max 50 characters)*</h4>
+								<input placeholder="Specialization_Name" name="specialization_name" class="input-fields" id="specialization_name" type="text" class="validate"
+									pattern="^[a-zA-z0-9\s]{3,100}$" oninvalid="setCustomValidity('Specialization name must be 3 Characters long')"
+									onchange="try{setCustomValidity('')}catch(e){}" required>
+							</div>
+									
+									
+									
+					<div class="3u 12u$(xsmall)">
+                         <h4>Photo (.jpg file Max 300kb)</h4>
+                      	<input type="file" name="photo" id="photo" value="Change File" onchange="preview_image(event)">
+					</div>
+                </div> 
+				
+					<div class="4u 12u$(xsmall)">
+						<ul class="actions" style="float:right;">
+                        <li>
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="registerMentor" value="true">
+                            <input type="submit" value="Submit " id="registerMentor"
+							
+							class="button" style="color: white !important;background-color:rgb(155,0,50);"
+								/>
+						</li>
+						</ul>
+					</div>
+				
+            </div>
+			</div>        
+
+
+      
+        
+    </form>
+	</div>
+</div>
+</section>
+<script type="text/javascript">
+</script>

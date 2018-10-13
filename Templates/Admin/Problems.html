@@ -1,0 +1,329 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="10u -1u 12u(medium) 12u(small) 12u(xsmall)">
+        <br>
+        <br>
+        <br>
+
+        <div class="row uniform" class="header-margin-double" ng-hide="project_table" id="filters">
+            <div class="4u 12u$(xsmall)">
+                <h6>Project Stream</h6>
+                <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                    <option value="" selected>All Streams</option>
+                    <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                        {{stream.stream_name}}
+                    </option>
+                </select>
+            </div>
+            <div class="4u 12u$(xsmall)">
+                <h6>Project Branch</h6>
+                <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                    <option value="" selected>All Branches</option>
+                    <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                        {{branch.branch_name}}
+                    </option>
+
+                </select>
+            </div>
+			<!-- 
+            <div class="3u 12u$(xsmall)">
+                <h6>Category</h6>
+                <select ng-model="selected_category" required>
+                    <option value="" selected>All Category</option>
+                    <option value="Proof of Concept">Proof of Concept</option>
+                    <option value="Prototype">Prototype</option>
+                    <option value="Product">Product</option>
+                    <option value="Start Up">Start Up</option>
+                </select>
+            </div>
+            <div class="3u 12u$(xsmall)">
+                <h6>Mentor</h6>
+                <select name="mentor_id" ng-model="selected_mentor" required>
+                    <option value="" selected>All Mentors</option>
+                    <option ng-repeat="mentor in mentors | filter:{ stream: selected_stream, branch: selected_branch }: true" value="{{mentor.mentor_id}}">
+                        {{mentor.mentor_name}}
+                    </option>
+                </select>
+            </div>
+			<div class="3u 12u$(xsmall)">
+                <h6>State</h6>
+				<select name="institute_state" ng-model="selected_state" id="state"   class="browser-default" required>
+                    <option value="" selected>All States</option>
+                    <option ng-repeat="state in states " value="{{state.project_state}}">
+                        {{state.project_state}}
+                    </option>
+				</select>
+            </div>
+			<div class="3u 12u$(xsmall)">
+                <h6>Institute Name</h6>
+				<select name="institute_name" ng-model="selected_inst" id="inst"   class="browser-default" required>
+                    <option value="" selected>All Institutes</option>
+                    <option ng-repeat="instname in inst " value="{{instname.project_inst}}">
+                        {{instname.project_inst}}
+                    </option>
+				</select>
+            </div>
+			 -->
+			<!-- jan 18 
+			<div class="4u 12u$(xsmall)">
+                            <h6>State</h6>
+                            <select ng-model="selected_state" id="state"  name="institute_state" class="browser-default" required>
+                            </select>
+            </div>
+			-->
+			<!-- <div class="3u 12u$(xsmall)">
+                            <h6>State</h6>
+                            <select ng-model="selected_state" id="state" onchange="displayCities(this.value)" name="institute_state" class="browser-default" required>
+                            </select>
+            </div>
+            <div class="3u 12u$(xsmall)">
+                            <h6>City</h6>
+                            <select ng-model="selected_city" name="institute_city" id="cities" class="browser-default" required>
+                                <option disabled selected>Select City</option>
+                            </select>
+            </div>
+			-->
+			<!-- 
+            <div class="2u 12u$(xsmall)">
+                <left>
+                    <input type="radio" id="all_projects" name="selected_filter" value="" ng-model="selected_filter" selected/>All&nbsp;&nbsp;<BR>
+                    <input type="radio" id="selected" name="selected_filter" value="1" ng-model="selected_filter" />Selected&nbsp;&nbsp
+					<BR>
+                    <input type="radio" id="not_selected" name="selected_filter" value="0" ng-model="selected_filter" />Not Selected&nbsp;&nbsp;
+                </left>
+            </div> 
+			
+			 -->
+			 <BR><BR><BR>
+            <div class="2u 12u$(xsmall)">
+			    <BR>
+                <center>
+                    <input type="radio" id="print_page" name="selected_page" value="print" ng-model="selected_page" ng-change="changePage()"
+                        selected/>Print&nbsp;&nbsp;
+                    <input type="radio" id="summary_page" name="selected_page" value="summary" ng-model="selected_page" ng-change="changePage()"
+                    />Summary&nbsp;&nbsp;
+                </center>
+            </div>
+            <div class="2u 12u$(xsmall)">
+			   <BR>
+                <center>
+                    <button class="round-button" onclick="export_data('report')" ng-hide="summary_page" style="background:rgb(155,0,50);">
+                        <i class="material-icons">explicit</i>
+                    </button>
+                    <button class="round-button" onclick="window.print();" ng-hide="print_page" style="background:rgb(155,0,50);">
+                        <i class="material-icons">print</i>
+                    </button>
+                    <button class="round-button" onclick="window.print();" ng-hide="print_individual_page" style="background:rgb(155,0,50);">
+                            <i class="material-icons">print</i>
+                        </button>
+                </center>
+            </div>
+        </div>
+        <div class="row uniform">
+            <div class="12u 12u$(xsmall)" ng-hide="summary_page">
+                <table class="table-wrapper" id="report">
+                    <thead>
+                        <tr ng-repeat="project in projects | filter:{ problem_stream: selected_stream, problem_branch: selected_branch }:true| limitTo:1:0">
+                            <th>
+                                Index
+                            </th>
+                            <th ng-repeat="(key,val) in project">
+                                <span ng-if="key=='problem_title'">
+                                    {{key}} (Click To Print)
+                                </span>
+                                <span ng-if="key!='problem_title'" ng-hide="1">
+                                    {{key}}
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="project in projects | filter:{ problem_stream: selected_stream, project_branch: selected_branch}: true ">
+                            <td>
+                                {{$index+1}}
+                            </td>
+                            <td ng-repeat="(key,val) in project">
+                                <span ng-if="key=='problem_title'">
+                                    <a href="" style="color:firebrick;" ng-click="open_project(project.problem_id)">{{val}}</a>
+                                </span>
+                                <span ng-if="key!='problem_title'" ng-hide="1">
+                                    {{val}}
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row uniform" ng-hide="print_individual_project" id="ProjectPrintIndividual">
+            <div class="12u 12u$(xsmall)">
+                <div class="12u 12u$(xsmall)">
+                    <span style="float:right" class="buttons">
+                        <a href="" ng-click="show_summary_page()">
+                            <i class="material-icons">close</i>
+                        </a>
+                    </span>
+                    <span ng-if="checkFirst($index)" id="StudentHome">
+                    </span>
+                    <center>
+                        <img src="images/4.png" style="height:5rem;">
+                    </center>
+                </div>
+                <div class="12u 12u$(xsmall">
+                    <table>
+                        <tr>
+                            <td> Problem ID </td>
+                            <td>{{projects[selected_project].problem_id}}</td>
+                        </tr>
+                        <tr>
+                            <td> Project Title </td>
+                            <td>{{projects[selected_project].problem_title}}</td>
+                        </tr>
+                        <tr>
+                            <td> Stream </td>
+                            <td>{{projects[selected_project].stream_name}}</td>
+                        </tr>
+                        <tr>
+                            <td> Branch </td>
+                            <td>{{projects[selected_project].branch_name}} </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Abstract of the project/innovation</b></h4>
+                                <p>{{projects[selected_project].problem_abstract}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><B>Desired Outcome of Problem</b></h4>
+                                <p>{{projects[selected_project].problem_desired_outcome}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Applications of Problem</b></h4>
+                                <p>{{projects[selected_project].problem_applications}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Tools for Problem</b></h4>
+                                <p>{{projects[selected_project].problem_tools}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Tentative workflow</b></h4>
+                                <p>{{projects[selected_project].problem_tentative_workflow}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Boundary conditions</b></h4>
+                                <p>{{projects[selected_project].problem_boundary_conditions}}</p>
+                            </td>
+                        </tr>
+
+
+
+						</table>
+                </div>
+            </div>
+        </div>
+        <div class="row uniform" ng-hide="print_page" ng-repeat="project in projects | filter:{ project_stream: selected_stream, project_branch: selected_branch, mentor_id: selected_mentor , project_category: selected_category, project_selected: selected_filter,institute_state: selected_state,institute_name:selected_inst}: true | orderBy:'-average_rating'" id="page-break-after">
+            <div class="12u 12u$(xsmall)">
+                <div class="12u 12u$(xsmall)">
+                    <span ng-if="checkFirst($index)" id="StudentHome">
+                    </span>
+                    <center>
+                        <img src="images/4.png" style="height:5rem;">
+                    </center>
+                </div>
+                <div class="12u 12u$(xsmall">
+                    <table>
+                        <tr>
+                            <td> Project ID </td>
+                            <td>{{project.problem_id}}</td>
+                        </tr>
+                        <tr>
+                            <td> Project Title </td>
+                            <td>{{project.problem_title}}</td>
+                        </tr>
+                        <tr>
+                            <td> Stream </td>
+                            <td>{{project.stream_name}}</td>
+                        </tr>
+                        <tr>
+                            <td> Branch </td>
+                            <td>{{project.branch_name}} </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Abstract of the project/innovation</b></h4>
+                                <p>{{project.problem_abstract}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><B>Desired Outcome of Problem</b></h4>
+                                <p>{{projects.problem_desired_outcome}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Applications of Problem</b></h4>
+                                <p>{{project.problem_applications}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Tools for Problem</b></h4>
+                                <p>{{project.problem_tools}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Tentative workflow</b></h4>
+                                <p>{{project.problem_tentative_workflow}}</p>
+                            </td>
+                        </tr>
+                        <tr id="no-break">
+                            <td colspan="2">
+                                <h4 style="color:black !important;"><b>Boundary conditions</b></h4>
+                                <p>{{project.problem_boundary_conditions}}</p>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+    // function selectAll(value) {
+    //    $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    // }
+	// var jsonData;
+    // $.getJSON("assets/json/states.json", function (data) {
+    //    jsonData = data;
+    //    var str = "<option value='' disabled selected>Select State</option>";
+    //    $.each(Object.keys(data), function (key, value) {
+    //        str += "<option value='" + value + "'>" + value + "</option>";
+    //    });
+    //    $("#state").html(str + "</select>");
+    // });
+     
+	
+    function displayCities(state) {
+        var str = "<option value='' disabled selected>Select Cities</option>";
+        $.each(jsonData[state], function (key, value) {
+            str += "<option value='" + value + "'>" + value + "</option>";
+        });
+        $("#cities").html(str + "</select>");
+    }
+	
+	
+	
+	
+</script>

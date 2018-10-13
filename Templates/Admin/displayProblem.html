@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <div class="inner">
+        
+		<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+           <i class="material-icons">info</i>Display Problem</h2>
+		</span>
+	   <span style="float:right" class="buttons">
+          <a href="" ng-click="show_admin_displayproblem_page()">
+             <i class="material-icons">arrow_back</i> Back
+             </a>
+        </span>
+		<hr>
+		<BR>	
+        <div class="row uniform">
+            <div class="12u">
+                <form id="modify_problem">
+                    <div class="row uniform">
+                        <table>
+							<tr><td width="30%"><h4>Problem Title </h4></td>
+							    <td width="70%">{{problem.problem_title}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Problem Stream - Branch   </h4></td>
+							    <td width="70%">{{problem.stream_name }} - {{problem.branch_name }}</td>
+							</tr>
+
+							<tr><td width="30%"><h4>Problem Description /Abstract </h4></td>
+							    <td width="70%">{{problem.problem_abstract}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Applications /End Users of Problem </h4></td>
+							    <td width="70%">{{problem.problem_applications}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Desired Outcome </h4></td>
+							    <td width="70%">{{problem.problem_desired_outcome}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Tools / Sectoral Knowledge required </h4></td>
+							    <td width="70%">{{problem.problem_tools}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Tentative Workflow </h4></td>
+							    <td width="70%">{{problem.problem_tentative_workflow}}</td>
+							</tr>
+							<tr><td width="30%"><h4>Boundary conditions  </h4></td>
+							    <td width="70%">{{problem.problem_boundary_conditions }}</td>
+							</tr>
+						
+						
+						</table>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</section>
+</body>
+</html>

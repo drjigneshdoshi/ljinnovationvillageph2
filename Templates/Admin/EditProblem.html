@@ -1,0 +1,95 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="allocateProject">
+                <div class="row uniform" class="header-margin-double">
+                    <div class="5u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="4u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branches</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- <div class="3u 12u$(xsmall)">
+                        <h6>Mentor</h6>
+                        <select name="mentor_id" required>
+                            <option value="" disabled selected>Select Mentor</option>
+                            <option ng-repeat="mentor in mentors " value="{{mentor.mentor_id}}">
+                                {{mentor.mentor_name}}
+                            </option>
+                        </select>
+                    </div> --> 
+                    <div class="3u 12u$(xsmall)">
+                        <br>
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="edit_problem" value="true">
+                            <input type="submit" value="Search" id="editProblem" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </center>
+                    </div>
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <!-- <th width="5%">
+                                        <input type="checkbox" id="projects" class="groups" onChange="selectAll(this.id);" style="border:2px dotted #00f;display:block;background:#ff0000;">
+                                        <label for="projects"></label>
+                                    </th> -->
+                                    <th width="5%">
+                                        No.
+                                    </th>
+                                    <th width="60%">
+                                        Problem Details (Click to view more details) 
+                                    </th>
+									<th width="35%"> Approve / Disable</th>
+
+									</tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="problem in problems | filter:{ problem_stream: selected_stream, problem_branch: selected_branch }:true">
+                                    
+                                    <!-- <td width="5%"></td> -->
+                                    <td width="5%">
+                                        <b style="color:rgb(155,0,50);">{{$index+1}}.</b>
+                                    </td>
+                                <td width="60%">
+										<b style="color:rgb(155,0,50);">
+										<a href="#/Admin/EditProblem/{{problem.problem_id}}"> {{problem.problem_title}} </a> </b> 
+									
+                                        
+                                </td>
+								<td width="35%">
+									<a href="" ng-if="problem.problem_status == '0'" style="color:red;" ng-click="problem_toggle(problem.problem_id)"><i class="material-icons"  style="color:red;">close</i> Disabled (Click To Approve)</a>
+									<a href="" ng-if="problem.problem_status == '1'" style="color:green;" ng-click="problem_toggle(problem.problem_id)"><i class="material-icons"  style="color:green;">done</i> Approved (Click to Remove Approval)</a>
+								</td>
+
+								</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

@@ -1,0 +1,92 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+           <br>
+			<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+				<i class="material-icons">view_module</i>Projects of LJ Innovation Village 2018 
+			</span>
+			 <span style="float:right" class="buttons">
+			  <a href="#/Projects" >
+				 <i class="material-icons">arrow_back</i> Back
+				 </a>
+			</span>
+            <form id="allocateProject">
+                <div class="row uniform" class="header-margin-double">
+                    <div class="6u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branches</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- 
+                    <div class="3u 12u$(xsmall)">
+                        <br>
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="project_allocate" value="true">
+                            <input type="submit" value="Allocate" id="allocateProject" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </center>
+                    </div> -->
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="15">
+                                        No.
+                                    </th>
+                                    <th>
+                                        Project Title (click to view abstract)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projects | filter:{ project_stream: selected_stream, project_branch: selected_branch }:true">
+                                   
+                                    <td>
+                                        <b>{{$index+1}}.</b>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <details style="width:100%;">
+                                                <summary>
+                                                    <b style="color:rgb(155,0,50);">
+                                                        {{project.project_title}}</b>
+                                                </summary>
+                                                <div id="justify">
+                                                    <p style="padding-left:1.5em;padding-right:1em;">
+                                                        {{project.project_abstract}}
+                                                    </p>
+                                                </div>
+                                            </details>
+                                        </b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

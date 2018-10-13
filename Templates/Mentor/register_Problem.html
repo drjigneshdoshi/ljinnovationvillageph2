@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <div class="inner">
+        <BR><BR>
+		<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+            <i class="material-icons">account_circle</i>Add Problem
+		</span>
+        
+		<span style="float:right" class="buttons">
+          <a href="" ng-click="show_display_problem_page()">
+             <i class="material-icons">close</i> Close
+             </a>
+        </span>
+		<hr>
+        <div class="row uniform">
+            <div class="12u">
+                <form id="registerProblem">
+                    <div class="row uniform">
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Problem Title*</h6>
+                            <input placeholder="problem Title" name="Problem_title" class="input-fields" id="full_name" type="text" class="validate"
+                                pattern="^[a-zA-z0-9\s]{3,150}$" oninvalid="setCustomValidity('Title name must be 3 Characters long')"
+                                onchange="try{setCustomValidity('')}catch(e){}" required>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Description/Abstract of the problem ( max 800 words)*</h6>
+                            
+                            <textarea id="textarea1" name="problem_abstract" class="materialize-textarea input-fields" data-length="1000" maxlength=1000 required></textarea>
+                        </div>
+						<!--
+						<div class="12u 12u$(xsmall)">
+                            <h6>Problem Description ( max 100 words)*</h6>
+                            <br>
+                            <textarea id="textarea1" name="problem_description" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div> 
+						-->
+						<div class="12u 12u$(xsmall)">
+                            <h6>Applications /End Users of Problem ( max 100 words)*</h6>
+                            
+                            <textarea id="textarea1" name="problem_applications" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+						<div class="12u 12u$(xsmall)">
+                            <h6>Desired Outcome ( max 100 words)*</h6>
+                            
+                            <textarea id="textarea1" name="problem_desired_outcome" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="12u 12u$(xsmall)">
+                            <h6>Tools / Sectoral Knowledge required  ( max 100 words)*</h6>
+                           
+                            <textarea id="textarea1" name="problem_tools" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+						<div class="12u 12u$(xsmall)">
+                            <h6>Tentative Workflow  ( max 100 words)*</h6>
+                            
+                            <textarea id="textarea1" name="problem_tentative_workflow" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+						<div class="12u 12u$(xsmall)">
+                            <h6>Boundary conditions  ( max 100 words)*</h6>
+                            
+                            <textarea id="textarea1" name="problem_boundary_conditions" class="materialize-textarea input-fields" data-length="500" maxlength=500 required></textarea>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>problem Stream*</h6>
+                            <select name="problem_stream" class="browser-default" required>
+                                <option value="" disabled selected>Select problem Stream</option>
+                                <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                    {{stream.stream_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>problem Branch*</h6>
+                            <select name="problem_branch" class="browser-default" required>
+                                <option value="" disabled selected>Select problem Branch</option>
+                                <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                    {{branch.branch_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>PDF* (.pdf file Max 2mb)
+                                <a href="pdf/template Content.pdf" style="color:rgb(155,0,50);">Sample pdf</a>
+                            </h6>
+                            <br>
+                            <input placeholder="College Name" name="problem_report_file" class="input-fields" id="report_pdf" type="file" class="validate"
+                                onchange="preview_report(event);" >
+                        </div>
+                        <!-- <div class="3u 12u$(xsmall)">
+                           
+                        </div> -->
+                    </div>
+                    <div class="12u$">
+                         
+                        <img id="output_image" style="max-width:150px;max-height:100px;float:right;" />
+                        <center>
+                            <ul class="actions">
+                                <li>
+                                    <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                                    <input type="hidden" name="email" value="{{cookie.email}}">
+                                    <input type="hidden" name="registerProblem" value="true"><BR>
+                                    <input type="submit" value="Submit Problem" id="registerProblem" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                                    />
+                                </li>
+                            </ul>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

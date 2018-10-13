@@ -1,0 +1,142 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="allocateProject">
+                <div class="row uniform" class="header-margin-double">
+                    <div class="3u 12u$(xsmall)">
+                        <h6>Project Stream</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="4u 12u$(xsmall)">
+                        <h6>Project Branch</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branches</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+					 <div class="2u 12u$(xsmall)">
+						<h6>Category</h6>
+						<select ng-model="selected_category" required>
+							<option value="" selected>All Category</option>
+							<option value="Proof of Concept">Proof of Concept</option>
+							<option value="Prototype">Prototype</option>
+							<option value="Product">Product</option>
+							<option value="Start Up">Start Up</option>
+						</select>
+					</div>
+                 <div class="3u 12u$(xsmall)">
+                        <h6>Mentor</h6>
+                        <select name="mentor_id" required>
+                            <option value="" disabled selected>Select Mentor</option>
+                            <option ng-repeat="mentor in mentors " value="{{mentor.mentor_id}}">
+                                {{mentor.mentor_name}}
+                            </option>
+                        </select>
+                    </div>
+			<div class="3u 12u$(xsmall)">
+                <h6>State</h6>
+				<select name="institute_state" ng-model="selected_state" id="state"   class="browser-default" required>
+                    <option value="" selected>All States</option>
+                    <option ng-repeat="state in states " value="{{state.project_state}}">
+                        {{state.project_state}}
+                    </option>
+				</select>
+            </div>
+
+				<div class="3u 12u$(xsmall)">
+                <h6>Project funding Requested?</h6>
+						<select name="funding_flag" class="browser-default" ng-model="selected_fundingflag">
+						<option value="" selected>Yes/No(Not Selected)</option>
+									<option value="Y">Yes</option>
+									<option value="N">No</option>
+						</select>
+				</div>
+			
+				<div class="3u 12u$(xsmall)">
+                <h6>Institute Name</h6>
+				<select name="institute_name" ng-model="selected_inst" id="inst"   class="browser-default" required>
+                    <option value="" selected>All Institutes</option>
+                    <option ng-repeat="instname in inst " value="{{instname.project_inst}}">
+                        {{instname.project_inst}}
+                    </option>
+				</select>
+				</div>
+			
+                    <div class="3u 12u$(xsmall)">
+                        <br>
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="project_allocate" value="true">
+                            <input type="submit" value="Allocate" id="allocateProject" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+                        </center>
+                    </div>
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="15">
+                                        <input type="checkbox" id="projects" class="groups" onChange="selectAll(this.id);" style="border:2px dotted #00f;display:block;background:#ff0000;">
+                                        <label for="projects"></label>
+                                    </th>
+                                    <th width="15">
+                                        No.
+                                    </th>
+                                    <th>
+                                        Project Details
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projects | filter:{ project_stream: selected_stream, project_branch: selected_branch, project_state: selected_state, 
+								project_category: selected_category, 
+								funding_flag: selected_fundingflag,
+								institute_name: selected_inst,
+								}:true">
+                                    <td>
+                                        <input type="checkbox" name="projects[]" id="{{project.project_id}}" class="projects" value="{{project.project_id}}">
+                                        <label for="{{project.project_id}}"></label>
+                                    </td>
+                                    <td>
+                                        <b>{{$index+1}}.</b>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <details style="width:100%;">
+                                                <summary>
+                                                    <b style="color:rgb(155,0,50);">
+                                                        {{project.project_title}}</b>
+                                                </summary>
+                                                <div id="justify">
+                                                    <p style="padding-left:1.5em;padding-right:1em;">
+                                                        {{project.project_abstract}}
+                                                    </p>
+                                                </div>
+                                            </details>
+                                        </b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

@@ -1,0 +1,94 @@
+<section class="wrapper header-margin-double" style="padding-top: 0px !important;">
+    <div class="inner">
+        <br>
+        <h2>
+            <i class="material-icons">account_circle</i> Register Student</h2>
+        
+		
+		<hr>
+        <div class="row uniform">
+            <div class="12u">
+			
+                <form id="registerStudent">
+				   <!--
+						<div class="row uniform">
+							<center> 
+							   <h1><b style="color:red;"> Registration closed!!! </b> </h1>
+							</center>
+						</div> 
+						-->
+                    <div class="row uniform">
+                        <div class="4u 12u$(xsmall)">
+                            <h6>First Name*</h6>
+                            <input type="text" maxlength="32" placeholder="Enter your First Name" name="first_name" pattern="^[A-Z]{3,30}$" oninvalid="setCustomValidity('Only Uppercase Characters Allowed with Min 3 Characters ( No Special or Spaces allowed)')"
+                            onchange="try{setCustomValidity('')}catch(e){}" required/>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Middle Name</h6>
+                            <input type="text" pattern="^[A-Z]{1,30}$" name="middle_name" value="" placeholder="Enter your Middle Name" oninvalid="setCustomValidity('Only Uppercase Characters Allowed')"
+                            onchange="try{setCustomValidity('')}catch(e){}"/>
+                        </div>
+                        <div class="4u 12u$(xsmall)">
+                            <h6>Last Name*</h6>
+                            <input type="text" pattern="^[A-Z]{3,30}$" name="last_name" value="" placeholder="Enter your Last Name" oninvalid="setCustomValidity('Only Uppercase Characters Allowed with Min 3 Characters ( No Special or Spaces allowed)')"
+                            onchange="try{setCustomValidity('')}catch(e){}" required/>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Email*</h6>
+                            <input type="email" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="" oninvalid="setCustomValidity('Invalid Email Address')" onchange="try{setCustomValidity('')}catch(e){}" required/>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Contact (Mobile Number)*</h6>
+                            <input type="text" name="contact" value="" placeholder="Enter contact number" pattern="[0-9]{10}" value="" oninvalid="setCustomValidity('Invalid Contact')" onchange="try{setCustomValidity('')}catch(e){}" required/>
+                        </div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Password* (Minimum 8 Characters)</h6>
+                            <input type="password" name="password" ng-model="register_password" placeholder="Enter password" required/>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Confirm Password*</h6>
+                            <input type="password" name="confirm_password" ng-model="confirm_password"  placeholder="Confirm your password" required/>
+                        </div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="3u 12u$(xsmall)">
+                            <div class="select-wrapper">
+                                <h6>Gender*</h6>
+                                <select name="gender" required>
+                                    <option value="" selected disabled>- Select Gender -</option>
+                                    <option value="Male" selected>Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <h6>Your Photo* (.jpg file Max 300KB)</h6>
+                            <a href="pdf/How to Compress the Photo.pdf" style="color:rgb(155,0,50);"> (link to compress Photo (if size > 300KB) )</a><br>
+                            <input type="file" name="photo" id="photo" onchange="preview_image(event)" required>
+                        </div>
+
+                        <div class="3u 12u$(xsmall)">
+                            <img id="output_image" style="max-width:150px;max-height:100px;float:right;" />
+                        </div>
+                    </div>
+                    <div class="12u$">
+                        <br>
+                        <center>
+                            <ul class="actions">
+                                <li>
+                                    <input type="hidden" name="register_student" value="true">
+                                    <input type="submit" value="Register" id="registerStudent" class="button" style="color: white !important;background-color:rgb(155,0,50);"/>
+                                </li>
+                            </ul>
+                        </center>
+                    </div> 
+					
+				
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

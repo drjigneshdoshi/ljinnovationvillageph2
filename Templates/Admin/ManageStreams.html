@@ -1,0 +1,95 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="manageStreams">
+				<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+					<i class="material-icons">view_module</i>Manage Stream
+				</span>
+				<span style="float:right" class="buttons">
+				  <a href="" ng-click="show_masters_page()">
+					 <i class="material-icons">arrow_back</i> Back
+					 </a>
+				</span>
+                <div class="row uniform" class="header-margin-double">
+                    <div class="8u 12u$(xsmall)">
+                        <h6>Stream Description</h6>
+                        <select ng-model="selected_stream" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Streams</option>
+                            <option ng-repeat="stream in streams" value="{{stream.stream_id}}">
+                                {{stream.stream_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="4u 12u$(xsmall)">
+                        
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="manage_stream" value="true">
+							<h4>
+								<center>
+									<a style="color:#3b5998;" href="#/Admin/AddStream">
+										<i class="material-icons" style="font-size:2em !important;">add_circle_outline</i>
+										<br> click here to add New Stream</a>
+								</center>
+							</h4>
+							
+							
+                            <!-- <input type="submit" value="Add New Stream" id="manageStreams" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+							-->
+							
+                        </center>
+                    </div>
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="25">
+                                        Index
+                                    </th>
+                                    <th>
+                                        Stream Description
+                                    </th>
+                                   <th> <center>
+                                        Click on Edit 
+										</center></th>
+                                
+								</tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="stream in streams | filter:{ stream_id: selected_stream }:true">
+                                    <td>
+                                        <b>{{$index+1}}.</b>
+                                    </td>
+                                    <td>
+										<b style="color:rgb(155,0,50);">
+                                            {{stream.stream_name}}</b>   
+                                    </td>
+									<td>
+										<center style="margin-top:10px;">
+									
+											<input type="hidden" name="credentials" value="{{cookie.credentials}}">
+											<input type="hidden" name="email" value="{{cookie.email}}">
+											<a href="#/Admin/EditStream/{{stream.stream_id}}">
+											<i class="material-icons" style="font-size:100% !important;">edit</i> Edit</a>
+										</center>	
+
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>

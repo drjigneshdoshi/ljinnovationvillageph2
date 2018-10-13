@@ -1,0 +1,92 @@
+<div class="row uniform" class="header-margin-double">
+    <div class="8u -2u 12u(xsmall)">
+        <div class="12u 12u(medium) 12u(small) 12u(xsmall)">
+            <br>
+            <br>
+            <br>
+            <form id="manageBranches">
+				<span style="color: rgb(155,0,50);font-size:2em;" style="float:left;">
+					<i class="material-icons">view_module</i>Manage Branches
+				</span>
+				<span style="float:right" class="buttons">
+				  <a href="" ng-click="show_masters_page()">
+					 <i class="material-icons">arrow_back</i> Back
+					 </a>
+				</span>
+
+				<div class="row uniform" class="header-margin-double">
+                    <div class="8u 12u$(xsmall)">
+                        <h6>Branch Description</h6>
+                        <select ng-model="selected_branch" ng-change="changeFilter()" class="browser-default">
+                            <option value="" selected>All Branch</option>
+                            <option ng-repeat="branch in branches" value="{{branch.branch_id}}">
+                                {{branch.branch_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="4u 12u$(xsmall)">
+                        
+                        <center style="margin-top:10px;">
+                            <input type="hidden" name="credentials" value="{{cookie.credentials}}">
+                            <input type="hidden" name="email" value="{{cookie.email}}">
+                            <input type="hidden" name="manage_branch" value="true">
+							<h4>
+								<center>
+									<a style="color:#3b5998;" href="#/Admin/AddBranch">
+										<i class="material-icons" style="font-size:2em !important;">add_circle_outline</i>
+										<br> click here to add New Branch</a>
+								</center>
+							</h4>
+							
+							
+                            <!-- <input type="submit" value="Add New Stream" id="manageStreams" class="button" style="color: white !important;background-color:rgb(155,0,50);"
+                            />
+							-->
+							
+                        </center>
+                    </div>
+                    <div class="12u 12u$(xsmall)">
+                        <table class="table-wrapper">
+                            <thead>
+                                <tr>
+                                    <th width="25">
+                                        Branch Id
+                                    </th>
+                                    <th>
+                                        Branch Description
+                                    </th>
+                                   <th>
+                                        Edit Branch
+										</th>
+                                
+								</tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="branch in branches | filter:{ branch_id: selected_branch }:true">
+                                    <td>
+                                        <b>{{branch.branch_id}}.</b>
+                                    </td>
+                                    <td>
+										<b style="color:rgb(155,0,50);">
+                                            {{branch.branch_name}}</b>   
+                                    </td>
+									<td>
+										<a href="#/Admin/EditBranch/{{branch.branch_id}}">
+										<i class="material-icons" style="font-size:100% !important;">edit</i> Edit</a>
+												
+
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function selectAll(value) {
+        $('.' + value).prop('checked', $('#' + value).is(":checked"));
+    }
+</script>
